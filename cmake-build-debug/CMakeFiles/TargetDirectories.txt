@@ -1,3 +1,0 @@
-D:/GitProjects/GardenCleanWaterUSB/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir
-D:/GitProjects/GardenCleanWaterUSB/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/GitProjects/GardenCleanWaterUSB/cmake-build-debug/CMakeFiles/rebuild_cache.dir
