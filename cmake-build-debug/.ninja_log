@@ -121,3 +121,5 @@
 2728	2885	7544934639472560	CMakeFiles/GardenCleanWaterUSB.elf.dir/USB_DEVICE/App/usbd_desc.c.obj	97f93fa64d2da114
 2737	2912	7544934639563843	CMakeFiles/GardenCleanWaterUSB.elf.dir/USB_DEVICE/Target/usbd_conf.c.obj	293c08926ce13d74
 2913	4706	7544934641324479	GardenCleanWaterUSB.elf	c5de69abd451b193
+7	313	7544937998888435	CMakeFiles/GardenCleanWaterUSB.elf.dir/Misc/src/init.cpp.obj	4456546c434608e5
+313	1395	7544938001944461	GardenCleanWaterUSB.elf	c5de69abd451b193

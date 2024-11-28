@@ -3,10 +3,10 @@
 extern CommonTimer delay;
 extern volatile uint16_t adcValues[];
 
-void commonInit(){
+/*void commonInit(){
 	NVIC_SetPriorityGrouping(4);
 	SystemCoreClockUpdate();
-}
+}*/
 
 /*void rccInit(){
 	RCC->CR |= RCC_CR_HSEON;
