@@ -20,293 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="869965f2-e84b-4944-9eda-d9923c9fda76" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.cproject" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.project" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeLists_template.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Control/inc/sequence.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Control/src/sequence.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Inc/main.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Inc/stm32f1xx_hal_conf.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Inc/stm32f1xx_it.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/stm32f1xx_hal_msp.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/stm32f1xx_hal_timebase_tim.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/stm32f1xx_it.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/syscalls.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/sysmem.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Src/system_stm32f1xx.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Core/Startup/startup_stm32f103cbtx.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/inc/coil.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/inc/coil_with_timer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/inc/gpio_common.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/inc/rf_impulse.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/inc/simple_input.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/inc/switch_delay.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/src/coil.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/src/coil_with_timer.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/src/gpio_common.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/src/rf_impulse.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/src/simple_input.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Discrete/src/switch_delay.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/STM32F103/Pics/STM32-Annotated.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/STM32F103/Pics/STM32-Mechanicals-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/STM32F103/Pics/STM32-Schematic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/STM32F103/Pics/STM32F103C8T6-Blue-Pill-Pin-Layout.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/STM32F103/STM32F1xRM.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/STM32F103/original-schematic-STM32F103C8T6-Blue_Pill.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/STM32F103/stm32f103c8 datasheet.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Очистка - описание/Входа-выхода.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Очистка - описание/Контроллер бочка отстойник мантажка.lay6" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Очистка - описание/Контроллер очистных 1 бочка отстойник.lay6" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Очистка - описание/Очистка.vsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Очистка - описание/Очистные сооружения ТЗ.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Очистка - описание/Последовательности.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Device/ST/STM32F1xx/LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/cmsis_armcc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/cmsis_armclang.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/cmsis_compiler.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/cmsis_gcc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/cmsis_iccarm.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/cmsis_version.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_armv8mbl.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_armv8mml.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_cm0.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_cm0plus.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_cm1.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_cm23.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_cm3.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_cm33.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_cm4.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_cm7.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_sc000.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/core_sc300.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/mpu_armv7.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/mpu_armv8.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/Include/tz_context.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/CMSIS/LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_bus.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_cortex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_dma.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_exti.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_gpio.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_pwr.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_rcc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_system.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usb.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_utils.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/ARM_CM3/port.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/ARM_CM3/portmacro.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/FreeRTOS.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/FreeRTOSConfig.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/StackMacros.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/atomic.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/croutine.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/deprecated_definitions.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/event_groups.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/list.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/message_buffer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/mpu_prototypes.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/mpu_wrappers.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/portable.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/projdefs.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/queue.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/semphr.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/stack_macros.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/stdint.readme" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/stream_buffer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/task.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Inc/timers.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Src/croutine.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Src/event_groups.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Src/heap_4.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Src/list.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Src/queue.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Src/stream_buffer.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Src/tasks.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FreeRTOS/Src/timers.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GardenCleanWaterUSB.ioc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainApp/inc/global_vars.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainApp/inc/main_app.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainApp/src/main_app.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Misc/inc/common.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Misc/inc/init.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Misc/inc/interfaces.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Misc/src/common.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Misc/src/init.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/STM32F103CBTX_FLASH.ld" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tasks/inc/all_tasks.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tasks/inc/common_for_tasks.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tasks/src/chb.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tasks/src/common_for_tasks.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tasks/src/diag.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tasks/src/ob.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timer/inc/common_timer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timer/inc/off_delay.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timer/inc/on_delay.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timer/inc/pulse.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timer/src/common_timer.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timer/src/off_delay.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timer/src/on_delay.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Timer/src/pulse.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/USB_DEVICE/App/usb_device.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/USB_DEVICE/App/usb_device.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/USB_DEVICE/App/usbd_cdc_if.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/USB_DEVICE/App/usbd_cdc_if.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/USB_DEVICE/App/usbd_desc.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/USB_DEVICE/App/usbd_desc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/USB_DEVICE/Target/usbd_conf.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/USB_DEVICE/Target/usbd_conf.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cache-v2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-dbfe373bd9e67c59a77c.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-8384094e4a287745e547.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-bfbfbde77ad0340b5a87.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-d0094a50bb2071803777.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-11-28T10-12-38-0432.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-GardenCleanWaterUSB.elf-Debug-1361cb74e57bee688b6f.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-15339553377d761d25a7.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CMakeASMCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CMakeCCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CMakeSystem.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CompilerIdC/CMakeCCompilerId.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CompilerIdCXX/CMakeCXXCompilerId.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Control/src/sequence.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Core/Src/main.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Core/Src/main.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Core/Src/stm32f1xx_hal_timebase_tim.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Core/Src/stm32f1xx_it.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Core/Src/syscalls.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Core/Src/sysmem.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Core/Src/system_stm32f1xx.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Core/Startup/startup_stm32f103cbtx.s.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Discrete/src/coil.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Discrete/src/coil_with_timer.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Discrete/src/gpio_common.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Discrete/src/rf_impulse.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Discrete/src/simple_input.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Discrete/src/switch_delay.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pcd_ex.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_usb.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/FreeRTOS/ARM_CM3/port.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/FreeRTOS/Src/croutine.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/FreeRTOS/Src/event_groups.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/FreeRTOS/Src/heap_4.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/FreeRTOS/Src/list.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/FreeRTOS/Src/queue.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/FreeRTOS/Src/stream_buffer.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/FreeRTOS/Src/tasks.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/FreeRTOS/Src/timers.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/MainApp/src/main_app.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Misc/src/common.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Misc/src/init.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Tasks/src/chb.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Tasks/src/common_for_tasks.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Tasks/src/diag.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Tasks/src/ob.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Timer/src/common_timer.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Timer/src/off_delay.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Timer/src/on_delay.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/Timer/src/pulse.cpp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/USB_DEVICE/App/usb_device.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/USB_DEVICE/App/usbd_cdc_if.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/USB_DEVICE/App/usbd_desc.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/GardenCleanWaterUSB.elf.dir/USB_DEVICE/Target/usbd_conf.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/GardenCleanWaterUSB.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/GardenCleanWaterUSB.elf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/GardenCleanWaterUSB.hex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/GardenCleanWaterUSB.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stm32f103c8_blue_pill.cfg" afterDir="false" />
-    </list>
+    <list default="true" id="869965f2-e84b-4944-9eda-d9923c9fda76" name="Changes" comment="development" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -384,8 +98,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1732784427271</updated>
-      <workItem from="1732784428605" duration="4305000" />
+      <workItem from="1732784428605" duration="4404000" />
     </task>
+    <task id="LOCAL-00001" summary="development">
+      <option name="closed" value="true" />
+      <created>1732790230128</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1732790230128</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,6 +118,10 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="development" />
+    <option name="LAST_COMMIT_MESSAGE" value="development" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
