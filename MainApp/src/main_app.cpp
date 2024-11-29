@@ -30,6 +30,11 @@ int mainApp(void){
 	if( xReturned != pdPASS ){
 		__NOP();
 	}
+    commQueue = xQueueCreate(256, sizeof (uint8_t));
+    xReturned = xTaskCreate(comm, "commTask", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 3, NULL);
+    if( xReturned != pdPASS ){
+        __NOP();
+    }
 	vTaskStartScheduler();
 	
 	while(1);

@@ -24,6 +24,9 @@ uint32_t CommonTimer::getCurrentTime(){
 void CommonTimer::setCurrentTime(uint32_t value){
 	curTime = value;
 }
+uint32_t CommonTimer::getTimeRemain() {
+    return getPeriod() - getCurrentTime();
+}
 void CommonTimer::start(){
 	go = true;
 }

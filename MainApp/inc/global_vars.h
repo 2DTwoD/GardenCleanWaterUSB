@@ -9,6 +9,7 @@
 #include "on_delay.h"
 #include "pulse.h"
 #include "common_for_tasks.h"
+#include "queue.h"
 
 //Входа/выхода
 SimpleInputDelayed B1(GPIOA, 0, 500);
@@ -164,4 +165,28 @@ IUpdated1ms *update1msObjects[] = {
 };
 
 uint8_t updateObjectsSize = sizeof(update1msObjects) / sizeof(*update1msObjects);
+
+xQueueHandle commQueue;
+
+extern "C"{
+void vApplicationIdleHook ( void ){
+    //idleCount++;
+}
+void vApplicationTickHook ( void ){
+}
+void vApplicationMallocFailedHook ( void ){
+    while(1);
+}
+void vApplicationStackOverflowHook( TaskHandle_t xTask, char * pcTaskName ){
+    ( void ) pcTaskName;
+    ( void ) xTask;
+    while(1);
+}
+void TIM2_IRQHandler(void){
+    TIM2->SR &= ~TIM_SR_UIF;
+    for(int i = 0; i < updateObjectsSize; i++){
+        update1msObjects[i]->update1ms();
+    }
+}
+}
 #endif //GLOBAL_VARS_H

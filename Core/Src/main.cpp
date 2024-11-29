@@ -56,27 +56,7 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-extern "C"{
-void vApplicationIdleHook ( void ){
-    //idleCount++;
-}
-void vApplicationTickHook ( void ){
-}
-void vApplicationMallocFailedHook ( void ){
-    while(1);
-}
-void vApplicationStackOverflowHook( TaskHandle_t xTask, char * pcTaskName ){
-    ( void ) pcTaskName;
-    ( void ) xTask;
-    while(1);
-}
-void TIM2_IRQHandler(void){
-    TIM2->SR &= ~TIM_SR_UIF;
-    for(int i = 0; i < updateObjectsSize; i++){
-        update1msObjects[i]->update1ms();
-    }
-}
-}
+
 /* USER CODE END 0 */
 
 /**

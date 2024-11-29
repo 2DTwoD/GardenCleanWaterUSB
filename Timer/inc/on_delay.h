@@ -11,6 +11,9 @@ class OnDelayCommon: private CommonTimer {
 		void setPause(bool value);
 		bool get();
 		void reset();
+        using CommonTimer::getPeriod;
+        using CommonTimer::setPeriod;
+        using CommonTimer::getTimeRemain;
 };
 
 class OnDelay: public OnDelayCommon, public IUpdated1ms {

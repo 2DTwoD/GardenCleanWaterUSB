@@ -14,7 +14,11 @@
 class CoilOnDelay: private OnDelayCommon, public Coil, public IUpdated1ms {
   public:
 		CoilOnDelay(GPIO_TypeDef *gpio, uint8_t pin, uint16_t delay);
-	
+        using Coil::set;
+        using Coil::reset;
+        using OnDelayCommon::getPeriod;
+        using OnDelayCommon::setPeriod;
+        using OnDelayCommon::getTimeRemain;
 		void update1ms() override;
 	
 		void setValue(bool value) override;
@@ -26,6 +30,9 @@ class CoilOffDelay: private OffDelayCommon, public Coil, public IUpdated1ms {
   public:
 		using Coil::set;
 		using Coil::reset;
+        using OffDelayCommon::getPeriod;
+        using OffDelayCommon::setPeriod;
+        using OffDelayCommon::getTimeRemain;
 		CoilOffDelay(GPIO_TypeDef *gpio, uint8_t pin, uint16_t delay);
 	
 		void update1ms() override;
@@ -39,6 +46,9 @@ class CoilPulse: private PulseCommon, public Coil, public IUpdated1ms  {
   public:
 		using Coil::set;
 		using Coil::reset;
+        using PulseCommon::getPeriod;
+        using PulseCommon::setPeriod;
+        using PulseCommon::getTimeRemain;
 		CoilPulse(GPIO_TypeDef *gpio, uint8_t pin, uint16_t delay);
 	
 		void update1ms() override;

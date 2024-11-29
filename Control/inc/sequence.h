@@ -37,5 +37,8 @@ class SequenceDelayed: private CommonTimer, public Sequence, public IUpdated1ms{
 		using Sequence::locked;
 		using Sequence::finished;
 		using Sequence::finishedImpulse;
+        using CommonTimer::getTimeRemain;
+        using CommonTimer::getPeriod;
+        using CommonTimer::setPeriod;
 };
 #endif //SEQUENCE_H

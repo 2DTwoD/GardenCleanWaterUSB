@@ -13,6 +13,9 @@ class PulseCommon: private CommonTimer {
 		void set(bool value);
 		bool get();
 		void reset();
+        using CommonTimer::getPeriod;
+        using CommonTimer::setPeriod;
+        using CommonTimer::getTimeRemain;
 };
 
 class Pulse: public PulseCommon, public IUpdated1ms {

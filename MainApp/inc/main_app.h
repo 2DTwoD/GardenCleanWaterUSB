@@ -5,12 +5,14 @@
 
 #include "FreeRTOS.h"
 #include "task.h"
+#include "queue.h"
 
 #include "init.h"
 #include "all_tasks.h"
 
 extern uint8_t updateObjectsSize;
 extern IUpdated1ms *update1msObjects[];
+extern xQueueHandle commQueue;
 //uint32_t idleCount;
 int mainApp(void);
 

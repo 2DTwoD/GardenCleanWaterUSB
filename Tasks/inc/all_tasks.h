@@ -4,6 +4,7 @@
 
 #include "FreeRTOS.h"
 #include "task.h"
+#include "queue.h"
 
 #include "common_for_tasks.h"
 #include "coil.h"
@@ -15,5 +16,6 @@
 void OBTask(void *pvParameters);
 void CHBTask(void *pvParameters);
 void diagTask(void *pvParameters);
+void comm(void *pvParameters);
 
 #endif //ALL_TASKS_H

@@ -28,7 +28,6 @@ void PulseCommon::reset(){
 	startFlag = false;
 	CommonTimer::stop();
 }
-
 //Pulse
 Pulse::Pulse(uint32_t period): PulseCommon(period){
 }

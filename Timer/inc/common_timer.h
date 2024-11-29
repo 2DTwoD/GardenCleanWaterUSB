@@ -15,7 +15,8 @@ class CommonTimer {
 		uint32_t getPeriod();
 		void setPeriod(uint32_t value);
 		uint32_t getCurrentTime();
-		void setCurrentTime(uint32_t value);
+        void setCurrentTime(uint32_t value);
+        uint32_t getTimeRemain();
 		void start();
 		void pause();
 		void stop();
