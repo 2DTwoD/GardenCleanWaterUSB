@@ -24,6 +24,7 @@
 /* USER CODE BEGIN INCLUDE */
 #include "FreeRTOS.h"
 #include "queue.h"
+
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -263,8 +264,11 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
 
+  //portBASE_TYPE xHigherPriorityTaskWoken;
   for(uint32_t i = 0; i < *Len; i++){
       xQueueSend(commQueue, Buf + i, portMAX_DELAY);
+      /*xQueueSendFromISR(commQueue, Buf + i, &xHigherPriorityTaskWoken);
+      portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);*/
   }
 
   return (USBD_OK);

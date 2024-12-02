@@ -9,6 +9,7 @@
 
 #include "init.h"
 #include "all_tasks.h"
+#include "api_engine.h"
 
 extern uint8_t updateObjectsSize;
 extern IUpdated1ms *update1msObjects[];

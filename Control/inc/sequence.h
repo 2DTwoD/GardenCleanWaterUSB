@@ -3,6 +3,14 @@
 #include "rf_impulse.h"
 #include "common_timer.h"
 
+enum Status{
+    SEQ_STAND_BY = 0,
+    SEQ_ACTIVE = 1,
+    SEQ_LOCKED = 2,
+    SEQ_FINISHED = 3,
+    SEQ_UNKNOWN = 4
+};
+
 class Sequence: private RFimpulse{
 	private:
 		bool strt;
@@ -23,6 +31,7 @@ class Sequence: private RFimpulse{
 		bool locked();
 		bool finished();
 		bool finishedImpulse();
+        Status getStatus();
 };
 
 class SequenceDelayed: private CommonTimer, public Sequence, public IUpdated1ms{

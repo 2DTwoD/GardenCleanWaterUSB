@@ -36,6 +36,5 @@ void pushSeqInQueue(Sequence *seq);
 Sequence* getSeqFromQueue();
 void deleteSeqFromQueue(Sequence *seq);
 void resetCHBsteps();
-void checkCommandAndSendResponse(uint8_t *command, uint8_t len);
 
 #endif //COMMON_FOR_TASKS_H

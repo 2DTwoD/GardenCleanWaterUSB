@@ -1,7 +1,6 @@
 #include "init.h"
 
 extern CommonTimer delay;
-extern volatile uint16_t adcValues[];
 
 /*void commonInit(){
 	NVIC_SetPriorityGrouping(4);

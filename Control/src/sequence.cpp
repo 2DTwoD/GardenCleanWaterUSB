@@ -51,6 +51,19 @@ bool Sequence::finishedImpulse(){
 	return RFimpulse::get();
 }
 
+Status Sequence::getStatus() {
+    if (finished()){
+        return SEQ_FINISHED;
+    } else if(!started()){
+        return SEQ_STAND_BY;
+    } else if(active()){
+        return SEQ_ACTIVE;
+    } else if(locked()){
+        return SEQ_LOCKED;
+    }
+    return SEQ_UNKNOWN;
+}
+
 //SequenceDelayed
 SequenceDelayed::SequenceDelayed(uint8_t *const cur_step_pointer, uint8_t seq_step, uint32_t delay): Sequence(cur_step_pointer, seq_step), CommonTimer(delay){
 }

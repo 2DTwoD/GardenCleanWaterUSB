@@ -1,7 +1,5 @@
 #include "all_tasks.h"
 
-//Максимальная длина команды
-#define MAX_COMMAND_LEN 30
 
 extern xQueueHandle commQueue;
 void comm(void *pvParameters){
