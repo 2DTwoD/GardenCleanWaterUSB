@@ -15,6 +15,10 @@ CoilOnDelay& CoilOnDelay::operator=(bool value){
 	return *this;
 }
 
+void CoilOnDelay::resetTimer() {
+    OnDelayCommon::reset();
+}
+
 //CoilOffDelayed
 CoilOffDelay::CoilOffDelay(GPIO_TypeDef *gpio, uint8_t pin, uint16_t delay): Coil(gpio, pin), OffDelayCommon(delay) {
 }
@@ -30,6 +34,10 @@ CoilOffDelay& CoilOffDelay::operator=(bool value){
 	return *this;
 }
 
+void CoilOffDelay::resetTimer() {
+    OffDelayCommon::reset();
+}
+
 //CoilPulse
 CoilPulse::CoilPulse(GPIO_TypeDef *gpio, uint8_t pin, uint16_t delay): Coil(gpio, pin), PulseCommon(delay) {
 }
@@ -43,4 +51,8 @@ void CoilPulse::setValue(bool value){
 CoilPulse& CoilPulse::operator=(bool value){
 	setValue(value);
 	return *this;
+}
+
+void CoilPulse::resetTimer() {
+    PulseCommon::reset();
 }

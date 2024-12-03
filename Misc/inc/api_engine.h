@@ -15,7 +15,7 @@
 #include "sequence.h"
 
 //Максимальная длина команды
-#define MAX_COMMAND_LEN 32
+#define MAX_COMMAND_LEN 256
 
 void checkCommandAndSendResponse(uint8_t *command, uint8_t len);
 

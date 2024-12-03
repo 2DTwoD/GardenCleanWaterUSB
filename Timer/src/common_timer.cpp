@@ -7,10 +7,7 @@ void CommonTimer::update(){
 	if(started()){
 		if(finished()) return;
 		curTime++;
-		return;
 	}
-	impulse = false;
-	curTime = 0;
 }
 uint32_t CommonTimer::getPeriod(){
 	return period;
@@ -58,9 +55,9 @@ void CommonTimer::setStart(bool value){
 }
 void CommonTimer::setPause(bool value){
 	if(value){
-		start();
-	} else {
 		pause();
+	} else {
+		start();
 	}
 }
 CommonTimer& CommonTimer::operator=(bool value){

@@ -1,6 +1,6 @@
 #ifndef ALL_TASKS_H
 #define ALL_TASKS_H
-#include "stdint.h"
+#include <cstdint>
 
 #include "FreeRTOS.h"
 #include "task.h"

@@ -56,10 +56,10 @@ Status Sequence::getStatus() {
         return SEQ_FINISHED;
     } else if(!started()){
         return SEQ_STAND_BY;
-    } else if(active()){
-        return SEQ_ACTIVE;
     } else if(locked()){
         return SEQ_LOCKED;
+    } else if(active()){
+        return SEQ_ACTIVE;
     }
     return SEQ_UNKNOWN;
 }
@@ -71,7 +71,12 @@ void SequenceDelayed::update1ms(){
 	if(Sequence::locked()){
 		return;
 	}
-	CommonTimer::setStart(Sequence::active());
+	CommonTimer::setPause(!Sequence::active());
 	CommonTimer::update();
 	Sequence::finish(CommonTimer::finished());
+}
+
+void SequenceDelayed::reset(){
+    Sequence::reset();
+    CommonTimer::reset();
 }

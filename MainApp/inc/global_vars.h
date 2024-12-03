@@ -32,13 +32,10 @@ CoilPulse M2(GPIOB, 5, 2000);
 Coil C3(GPIOB, 6);
 Coil O3(GPIOB, 7);
 Coil D3(GPIOB, 8);
-CoilPulse M3(GPIOB, 9, 2000);
+CoilPulse M3(GPIOB, 9, 20000);
 Coil D4(GPIOB, 10);
 CoilOffDelay M6(GPIOB, 11, 5000);
 Coil M7(GPIOB, 12);
-Coil Me1(GPIOB, 13);
-Coil Me2(GPIOB, 14);
-Coil Me3(GPIOB, 15);
 //Светодиод на blue pill
 Coil led(GPIOC, 13);
 
@@ -50,7 +47,6 @@ SequenceDelayed OB1s1(&OB1step, 1, 120000);//2 минуты
 SequenceDelayed OB1s2(&OB1step, 2, 30000);//30 секунд
 Sequence OB1s3(&OB1step, 3);
 SequenceDelayed OB1s4(&OB1step, 4, 345600000);//96 часов
-PulseInterrapt OB1s4MeTimer(3600000);//1 час
 Sequence OB1s5(&OB1step, 5);
 
 //Бак отстойника2:
@@ -60,17 +56,15 @@ SequenceDelayed OB2s1(&OB2step, 1, 120000);//2 минуты
 SequenceDelayed OB2s2(&OB2step, 2, 30000);//30 секунд
 Sequence OB2s3(&OB2step, 3);
 SequenceDelayed OB2s4(&OB2step, 4, 345600000);//96 часов
-PulseInterrapt OB2s4MeTimer(3600000);//1 час
 Sequence OB2s5(&OB2step, 5);
 
 //Бак отстойника3:
 uint8_t OB3step;
 Sequence OB3s0(&OB3step, 0);
-SequenceDelayed OB3s1(&OB3step, 1, 120000);//2 минуты
-SequenceDelayed OB3s2(&OB3step, 2, 30000);//30 секунд
+SequenceDelayed OB3s1(&OB3step, 1, 12000);//2 минуты
+SequenceDelayed OB3s2(&OB3step, 2, 3000);//30 секунд
 Sequence OB3s3(&OB3step, 3);
-SequenceDelayed OB3s4(&OB3step, 4, 345600000);//96 часов
-PulseInterrapt OB3s4MeTimer(3600000);//1 час
+SequenceDelayed OB3s4(&OB3step, 4, 34560);//96 часов
 Sequence OB3s5(&OB3step, 5);
 
 //Чистый бак:
@@ -87,7 +81,6 @@ TaskKit ob1Kit{
 	&OB1s2,
 	&OB1s3,
 	&OB1s4,
-	&OB1s4MeTimer,
 	&OB1s5,
 	&B1,
 	&H1,
@@ -95,7 +88,6 @@ TaskKit ob1Kit{
 	&O1,
 	&D1,
 	&M1,
-	&Me1,
 };
 TaskKit ob2Kit{
 	&OB2step,
@@ -104,7 +96,6 @@ TaskKit ob2Kit{
 	&OB2s2,
 	&OB2s3,
 	&OB2s4,
-	&OB2s4MeTimer,
 	&OB2s5,
 	&B2,
 	&H2,
@@ -112,7 +103,6 @@ TaskKit ob2Kit{
 	&O2,
 	&D2,
 	&M2,
-	&Me2
 };
 TaskKit ob3Kit{
 	&OB3step,
@@ -121,7 +111,6 @@ TaskKit ob3Kit{
 	&OB3s2,
 	&OB3s3,
 	&OB3s4,
-	&OB3s4MeTimer,
 	&OB3s5,
 	&B3,
 	&H3,
@@ -129,7 +118,6 @@ TaskKit ob3Kit{
 	&O3,
 	&D3,
 	&M3,
-	&Me3
 };
 
 //Очередь
@@ -152,15 +140,12 @@ IUpdated1ms *update1msObjects[] = {
 	&OB1s1,
 	&OB1s2,
 	&OB1s4,
-	&OB1s4MeTimer,
 	&OB2s1,
 	&OB2s2,
 	&OB2s4,
-	&OB2s4MeTimer,
 	&OB3s1,
 	&OB3s2,
 	&OB3s4,
-	&OB3s4MeTimer,
 	&CHBs1
 };
 

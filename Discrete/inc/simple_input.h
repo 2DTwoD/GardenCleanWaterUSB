@@ -6,9 +6,11 @@
 #include "gpio_common.h"
 #include "common_timer.h"
 
+#define DI_SIM_ON
+
 //SimpleInput
 class SimpleInput: public GPIOcommon, public ISwitch{
-	#ifdef SIM_ON
+	#ifdef DI_SIM_ON
 	private:
 		bool sim_on;
 		bool sim_val;

@@ -22,6 +22,8 @@ class CoilOnDelay: private OnDelayCommon, public Coil, public IUpdated1ms {
 		void update1ms() override;
 	
 		void setValue(bool value) override;
+
+        void resetTimer();
 	
 		CoilOnDelay& operator=(bool value);
 };
@@ -38,6 +40,8 @@ class CoilOffDelay: private OffDelayCommon, public Coil, public IUpdated1ms {
 		void update1ms() override;
 	
 		void setValue(bool value) override;
+
+        void resetTimer();
 	
 		CoilOffDelay& operator=(bool value);
 };
@@ -54,6 +58,8 @@ class CoilPulse: private PulseCommon, public Coil, public IUpdated1ms  {
 		void update1ms() override;
 	
 		void setValue(bool value) override;
+
+        void resetTimer();
 	
 		CoilPulse& operator=(bool value);
 };

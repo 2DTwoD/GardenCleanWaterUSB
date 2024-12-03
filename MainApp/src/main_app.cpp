@@ -8,7 +8,7 @@ int mainApp(void){
 	tickInit();
 	
 	BaseType_t xReturned;
-	xReturned = xTaskCreate(OBTask, "OB1Task", configMINIMAL_STACK_SIZE, (void*) &ob1Kit, tskIDLE_PRIORITY + 2, NULL);
+	xReturned = xTaskCreate(OBTask, "OB1Task", configMINIMAL_STACK_SIZE, (void*) &ob1Kit , tskIDLE_PRIORITY + 2, NULL);
 	if( xReturned != pdPASS ){
 		__NOP();
 	}
@@ -29,7 +29,7 @@ int mainApp(void){
 		__NOP();
 	}
     commQueue = xQueueCreate(MAX_COMMAND_LEN, sizeof (uint8_t));
-    xReturned = xTaskCreate(comm, "commTask", configMINIMAL_STACK_SIZE * 2, NULL, tskIDLE_PRIORITY + 3, NULL);
+    xReturned = xTaskCreate(comm, "commTask", configMINIMAL_STACK_SIZE * 4, NULL, tskIDLE_PRIORITY + 3, NULL);
     if( xReturned != pdPASS ){
         __NOP();
     }

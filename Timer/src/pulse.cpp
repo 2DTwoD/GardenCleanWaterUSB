@@ -4,16 +4,13 @@
 PulseCommon::PulseCommon(uint32_t period): CommonTimer(period){
 }
 void PulseCommon::update(){
-	if(CommonTimer::finished()){
-		CommonTimer::stop();
-	}
 	CommonTimer::update();
 }
 void PulseCommon::set(bool value){
 	if(value){
 		if(!startFlag){
 			startFlag = true;
-			CommonTimer::start();
+			CommonTimer::prepareAndStart();
 		}
 	} else {
 		if(CommonTimer::isFree()){

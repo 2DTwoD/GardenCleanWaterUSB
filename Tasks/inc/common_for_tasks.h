@@ -21,7 +21,6 @@ struct TaskKit{
 	SequenceDelayed* OBs2;
 	Sequence* OBs3;
 	SequenceDelayed* OBs4;
-	PulseInterrapt* OBs4MeTimer;
 	Sequence* OBs5;
 	SimpleInputDelayed* B;
 	SimpleInputDelayed* H;
@@ -29,7 +28,6 @@ struct TaskKit{
 	Coil* O;
 	Coil* D;
 	CoilPulse* M;
-	Coil* Me;
 }; 
 
 void pushSeqInQueue(Sequence *seq);

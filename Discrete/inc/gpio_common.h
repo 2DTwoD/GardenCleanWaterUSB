@@ -6,7 +6,7 @@ class GPIOcommon{
 	protected:
 		uint8_t pin;
 		GPIO_TypeDef * gpio;
-  public:
+    public:
 		GPIOcommon(GPIO_TypeDef * gpio, uint8_t pin);
 };
 

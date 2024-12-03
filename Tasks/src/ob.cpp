@@ -9,18 +9,17 @@ void resetAllSteps(TaskKit* taskKit){
 	taskKit->OBs3->reset();
 	taskKit->OBs4->reset();
 	taskKit->OBs5->reset();
+    taskKit->M->resetTimer();
 	*taskKit->C = false;
 	*taskKit->O = false;
 	*taskKit->D = false;
 	*taskKit->M = false;
-	*taskKit->Me = false;
 }
 
 void OBTask(void *pvParameters){
 	TaskKit* obKit = (TaskKit*) pvParameters;
 	resetAllSteps(obKit);
 	while(1){
-		*obKit->OBs4MeTimer = obKit->OBs4->active();
 		if(obKit->OBs4->finishedImpulse()){
 			pushSeqInQueue(obKit->OBs5);
 		}
@@ -30,7 +29,6 @@ void OBTask(void *pvParameters){
 				obKit->OBs0->finish(obKit->H->isNotActive());
 				*obKit->C = false;
 				*obKit->M = false;
-				*obKit->Me = false;
 				break;
 			case 1:
 				obKit->OBs1->start(true);
@@ -38,7 +36,6 @@ void OBTask(void *pvParameters){
 				*obKit->O = false;
 				*obKit->D = obKit->OBs1->active();
 				*obKit->M = false;
-				*obKit->Me = false;
 				break;
 			case 2:
 				obKit->OBs2->start(true);
@@ -46,7 +43,6 @@ void OBTask(void *pvParameters){
 				*obKit->O = false;
 				*obKit->D = obKit->OBs2->active();
 				*obKit->M = false;
-				*obKit->Me = false;
 				break;
 			case 3:
 				obKit->OBs3->start(true);
@@ -54,8 +50,10 @@ void OBTask(void *pvParameters){
 				*obKit->C = obKit->OBs3->active();
 				*obKit->O = false;
 				*obKit->D = false;
-				*obKit->M = obKit->OBs3->active();
-				*obKit->Me = obKit->OBs3->active();
+                *obKit->M = obKit->OBs3->active();
+                if(obKit->OBs3->finished() && obKit->M->isActive()){
+                    obKit->M->resetTimer();
+                }
 				break;
 			case 4:
 				obKit->OBs4->start(true);
@@ -63,16 +61,15 @@ void OBTask(void *pvParameters){
 				*obKit->O = false;
 				*obKit->D = false;
 				*obKit->M = false;
-				*obKit->Me = obKit->OBs4MeTimer->get();
 				break;
 			case 5:
 				obKit->OBs5->lock(CHBs2.locked());
-				obKit->OBs5->finish(obKit->H->isNotActive());
+//				obKit->OBs5->finish(obKit->H->isNotActive());
+				obKit->OBs5->finish(true);
 				*obKit->C = false;
 				*obKit->O = obKit->OBs5->active();
 				*obKit->D = false;
 				*obKit->M = false;
-				*obKit->Me = false;
 				break;
 			default:
 				*obKit->OBstep = 0;
