@@ -67,8 +67,8 @@ static const char *patternPeriph = "{'H1':%d,'H2':%d,'H3':%d,'B1':%d,'B2':%d,'B3
                       "'M1':%d,'M2':%d,'M3':%d,'M6':%d,'M7':%d}";
 
 static const char *patternOB = "{'step':%d,'s1St':%d,'s2St':%d,'s3St':%d,'s4St':%d,'s5St':%d,'s6St':%d,"
-                            "'s2Per':%d,'s2TimeRem':%d,'s3MPer':%d,'s3MTimeRem':%d,"
-                            "'s4Per':%d,'s4TimeRem':%d,'s5Per':%d,'s5TimeRem':%d}";
+                            "'s2Per':%d,'s2TimeRem':%d,'s3Per':%d,'s3TimeRem':%d,"
+                            "'s4MPer':%d,'s4MTimeRem':%d,'s5Per':%d,'s5TimeRem':%d}";
 
 static const char *patternCHB = "{'step':%d,'s1St':%d,'s2St':%d,'s3St':%d,'s2Per':%d,'s2TimeRem':%d}";
 
@@ -86,10 +86,19 @@ void sendResponse(){
     taskEXIT_CRITICAL();
 }
 
+void zeroAndFill(char *ar, char *fillVal){
+    memset(ar, 0, MAX_COMMAND_LEN);
+    sprintf(ar, "%s", fillVal);
+}
+
 void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
-    char *action = strtok((char *)command, ".");
-    char *parameter = strtok(nullptr, ".");
-    uint32_t value = atoi(strtok(nullptr, "."));
+    char action[MAX_COMMAND_LEN];
+    char parameter[MAX_COMMAND_LEN];
+    char strValue[MAX_COMMAND_LEN];
+    zeroAndFill(action, strtok((char *)command, "."));
+    zeroAndFill(parameter, strtok(nullptr, "."));
+    zeroAndFill(strValue, strtok(nullptr, "."));
+    uint32_t value = atoi(strValue);
     if(!strncmp("get", action, 3)){
         memset(container, 0, CONTAINER_LEN);
         if(!strncmp("periph", parameter, 6)){

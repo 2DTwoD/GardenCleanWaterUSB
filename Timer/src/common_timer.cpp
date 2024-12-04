@@ -13,7 +13,10 @@ uint32_t CommonTimer::getPeriod(){
 	return period;
 }
 void CommonTimer::setPeriod(uint32_t value){
-	period = value;
+    period = value;
+    if(finished()){
+        setCurrentTime(value);
+    }
 }
 uint32_t CommonTimer::getCurrentTime(){
 	return curTime;

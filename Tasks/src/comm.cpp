@@ -17,6 +17,7 @@ void comm(void *pvParameters){
                     index++;
                 }
             } else if(received == '['){
+                memset(commandStr, 0, MAX_COMMAND_LEN);
                 index = 0;
             }
         }

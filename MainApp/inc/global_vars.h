@@ -61,10 +61,10 @@ Sequence OB2s5(&OB2step, 5);
 //Бак отстойника3:
 uint8_t OB3step;
 Sequence OB3s0(&OB3step, 0);
-SequenceDelayed OB3s1(&OB3step, 1, 12000);//2 минуты
-SequenceDelayed OB3s2(&OB3step, 2, 3000);//30 секунд
+SequenceDelayed OB3s1(&OB3step, 1, 120000);//2 минуты
+SequenceDelayed OB3s2(&OB3step, 2, 30000);//30 секунд
 Sequence OB3s3(&OB3step, 3);
-SequenceDelayed OB3s4(&OB3step, 4, 34560);//96 часов
+SequenceDelayed OB3s4(&OB3step, 4, 345600000);//96 часов
 Sequence OB3s5(&OB3step, 5);
 
 //Чистый бак:
