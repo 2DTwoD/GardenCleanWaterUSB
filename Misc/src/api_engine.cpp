@@ -64,13 +64,14 @@ extern Sequence CHBs2;
 
 static const char *patternPeriph = "{'H1':%d,'H2':%d,'H3':%d,'B1':%d,'B2':%d,'B3':%d,'S4':%d,'S5':%d,'S6':%d,"
                       "'C1':%d,'C2':%d,'C3':%d,'O1':%d,'O2':%d,'O3':%d,'D1':%d,'D2':%d,'D3':%d,'D4':%d,"
-                      "'M1':%d,'M2':%d,'M3':%d,'M6':%d,'M7':%d}";
+                      "'M1':%d,'M2':%d,'M3':%d,'M6':%d,'M7':%d}\n";
 
-static const char *patternOB = "{'step':%d,'s1St':%d,'s2St':%d,'s3St':%d,'s4St':%d,'s5St':%d,'s6St':%d,"
+static const char *patternCHB = "{'step':%d,'auto':%d,'s1St':%d,'s2St':%d,'s3St':%d,"
+                                "'s2Per':%d,'s2TimeRem':%d,'queue':'%s'}\n";
+
+static const char *patternOB = "{'step':%d,'auto':%d,'s1St':%d,'s2St':%d,'s3St':%d,'s4St':%d,'s5St':%d,'s6St':%d,"
                             "'s2Per':%d,'s2TimeRem':%d,'s3Per':%d,'s3TimeRem':%d,"
-                            "'s4MPer':%d,'s4MTimeRem':%d,'s5Per':%d,'s5TimeRem':%d}";
-
-static const char *patternCHB = "{'step':%d,'s1St':%d,'s2St':%d,'s3St':%d,'s2Per':%d,'s2TimeRem':%d}";
+                            "'s4Per':%d,'s4TimeRem':%d,'s5Per':%d,'s5TimeRem':%d}\n";
 
 static uint8_t container[CONTAINER_LEN];
 
@@ -108,30 +109,30 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
                     D2.isActive(), D3.isActive(), D4.isActive(), M1.isActive(), M2.isActive(), M3.isActive(),
                     M6.isActive(), M7.isActive());
             sendResponse();
+        } else if(!strncmp("chb", parameter, 3)){
+            sprintf((char *)container, patternCHB, CHBstep + 1, 0, CHBs0.getStatus(), CHBs1.getStatus(), CHBs2.getStatus(),
+                    CHBs1.getPeriod(), CHBs1.getTimeRemain(), "000");
+            sendResponse();
         } else if(!strncmp("ob1", parameter, 3)){
-            sprintf((char *)container, patternOB, OB1step + 1, OB1s0.getStatus(), OB1s1.getStatus(), OB1s2.getStatus(),
+            sprintf((char *)container, patternOB, OB1step + 1, 0, OB1s0.getStatus(), OB1s1.getStatus(), OB1s2.getStatus(),
                     OB1s3.getStatus(), OB1s4.getStatus(), OB1s5.getStatus(), OB1s1.getPeriod(), OB1s1.getTimeRemain(),
                     OB1s2.getPeriod(), OB1s2.getTimeRemain(), M1.getPeriod(), M1.getTimeRemain(),
                     OB1s4.getPeriod(), OB1s4.getTimeRemain());
             sendResponse();
         } else if(!strncmp("ob2", parameter, 3)){
-            sprintf((char *)container, patternOB, OB2step + 1, OB2s0.getStatus(), OB2s1.getStatus(), OB2s2.getStatus(),
+            sprintf((char *)container, patternOB, OB2step + 1, 0, OB2s0.getStatus(), OB2s1.getStatus(), OB2s2.getStatus(),
                     OB2s3.getStatus(), OB2s4.getStatus(), OB2s5.getStatus(), OB2s1.getPeriod(), OB2s1.getTimeRemain(),
                     OB2s2.getPeriod(), OB2s2.getTimeRemain(), M2.getPeriod(), M2.getTimeRemain(),
                     OB2s4.getPeriod(), OB2s4.getTimeRemain());
             sendResponse();
         } else if(!strncmp("ob3", parameter, 3)){
-            sprintf((char *)container, patternOB, OB3step + 1, OB3s0.getStatus(), OB3s1.getStatus(), OB3s2.getStatus(),
+            sprintf((char *)container, patternOB, OB3step + 1, 0, OB3s0.getStatus(), OB3s1.getStatus(), OB3s2.getStatus(),
                     OB3s3.getStatus(), OB3s4.getStatus(), OB3s5.getStatus(), OB3s1.getPeriod(), OB3s1.getTimeRemain(),
                     OB3s2.getPeriod(), OB3s2.getTimeRemain(), M3.getPeriod(), M3.getTimeRemain(),
                     OB3s4.getPeriod(), OB3s4.getTimeRemain());
             sendResponse();
-        } else if(!strncmp("chb", parameter, 3)){
-            sprintf((char *)container, patternCHB, CHBstep + 1, CHBs0.getStatus(), CHBs1.getStatus(), CHBs2.getStatus(),
-                    CHBs1.getPeriod(), CHBs1.getTimeRemain());
-            sendResponse();
         } else {
-            sendRespText("wrong get command");
+            sendRespText("wrong get command\n");
         }
     } else if(!strncmp("set", action, 3)){
         if(!strncmp("c1", parameter, 2)){
@@ -199,11 +200,11 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
         } else if(!strncmp("chbs2per", parameter, 8)){
             CHBs1.setPeriod(limit((int)value, 1000, 600000));
         }  else {
-            sendRespText("wrong set command");
+            sendRespText("wrong set command\n");
             return;
         }
-        sendRespText("ok");
+        sendRespText("ok\n");
     } else if(!strncmp("ping", action, 4)){
-        sendRespText("pong");
+        sendRespText("pong\n");
     }
 }
