@@ -1,6 +1,6 @@
 #include "api_engine.h"
 
-#define CONTAINER_LEN 256
+#define CONTAINER_LEN 512
 
 extern SimpleInputDelayed B1;
 extern SimpleInputDelayed H1;
@@ -64,14 +64,14 @@ extern Sequence CHBs2;
 
 static const char *patternPeriph = "{'H1':%d,'H2':%d,'H3':%d,'B1':%d,'B2':%d,'B3':%d,'S4':%d,'S5':%d,'S6':%d,"
                       "'C1':%d,'C2':%d,'C3':%d,'O1':%d,'O2':%d,'O3':%d,'D1':%d,'D2':%d,'D3':%d,'D4':%d,"
-                      "'M1':%d,'M2':%d,'M3':%d,'M6':%d,'M7':%d}\n";
+                      "'M1':%d,'M2':%d,'M3':%d,'M6':%d,'M7':%d}";
 
 static const char *patternCHB = "{'step':%d,'auto':%d,'s1St':%d,'s2St':%d,'s3St':%d,"
-                                "'s2Per':%d,'s2TimeRem':%d,'queue':'%s'}\n";
+                                "'s2Per':%d,'s2TimeRem':%d,'queue':'%s'}";
 
 static const char *patternOB = "{'step':%d,'auto':%d,'s1St':%d,'s2St':%d,'s3St':%d,'s4St':%d,'s5St':%d,'s6St':%d,"
                             "'s2Per':%d,'s2TimeRem':%d,'s3Per':%d,'s3TimeRem':%d,"
-                            "'s4Per':%d,'s4TimeRem':%d,'s5Per':%d,'s5TimeRem':%d}\n";
+                            "'s4Per':%d,'s4TimeRem':%d,'s5Per':%d,'s5TimeRem':%d}";
 
 static uint8_t container[CONTAINER_LEN];
 
@@ -132,7 +132,7 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
                     OB3s4.getPeriod(), OB3s4.getTimeRemain());
             sendResponse();
         } else {
-            sendRespText("wrong get command\n");
+            sendRespText("wrong get command");
         }
     } else if(!strncmp("set", action, 3)){
         if(!strncmp("c1", parameter, 2)){
@@ -200,11 +200,11 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
         } else if(!strncmp("chbs2per", parameter, 8)){
             CHBs1.setPeriod(limit((int)value, 1000, 600000));
         }  else {
-            sendRespText("wrong set command\n");
+            sendRespText("wrong set command");
             return;
         }
-        sendRespText("ok\n");
+        sendRespText("ok");
     } else if(!strncmp("ping", action, 4)){
-        sendRespText("pong\n");
+        sendRespText("pong");
     }
 }

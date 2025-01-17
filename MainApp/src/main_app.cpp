@@ -29,7 +29,7 @@ int mainApp(void){
 		__NOP();
 	}
     commQueue = xQueueCreate(MAX_COMMAND_LEN, sizeof (uint8_t));
-    xReturned = xTaskCreate(comm, "commTask", configMINIMAL_STACK_SIZE * 4, NULL, tskIDLE_PRIORITY + 3, NULL);
+    xReturned = xTaskCreate(comm, "commTask", configMINIMAL_STACK_SIZE * 8, NULL, tskIDLE_PRIORITY + 1, NULL);
     if( xReturned != pdPASS ){
         __NOP();
     }
