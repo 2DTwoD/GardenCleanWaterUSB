@@ -1,6 +1,8 @@
 #include "all_tasks.h"
 
 extern uint8_t CHBstep;
+extern bool CHBauto;
+extern bool CHBnext;
 extern Sequence CHBs0;
 extern SequenceDelayed CHBs1;
 extern Sequence CHBs2;
@@ -15,30 +17,43 @@ extern Coil M7;
 void CHBTask(void *pvParameters){
 	Sequence *current_ob = nullptr;
 	while(1){
+        if(!CHBauto){
+            CHBs0.lock(true);
+            CHBs1.lock(true);
+            CHBs2.lock(true);
+            CHBnext = false;
+            continue;
+        }
 		if(CHBs0.finishedImpulse() && current_ob != nullptr){
 			current_ob->start(true);
 		}
-		switch(CHBstep){
-			case 0:
-				current_ob = getSeqFromQueue();
-				CHBs0.start(S5.isNotActive());
-				CHBs0.finish(current_ob != nullptr);
-				D4 = false;
-				M7 = false;
-				break;
-			case 1:
-				CHBs1.start(true);
-				D4 = CHBs1.active();
-				M7 = false;
-				break;
-			case 2:
-				CHBs2.start(true);
-				CHBs2.lock(S4.isActive());
-				D4 = false;
-				M7 = CHBs2.active();
-				break;
-		}
-		M6 = S6.isActive();
+		switch(CHBstep) {
+            case 0:
+                current_ob = getSeqFromQueue();
+                CHBs0.start(S5.isNotActive());
+                CHBs0.lock(false);
+                CHBs0.finish(current_ob != nullptr || CHBnext);
+                D4 = false;
+                M7 = false;
+                break;
+            case 1:
+                CHBs1.start(true);
+                CHBs1.lock(false);
+                CHBs1.finish(CHBnext);
+                D4 = CHBs1.active();
+                M7 = false;
+                break;
+            case 2:
+                CHBs2.start(true);
+                CHBs2.lock(S4.isActive());
+                CHBs2.finish(CHBnext);
+                D4 = false;
+                M7 = CHBs2.active();
+                break;
+            default:
+                resetCHBsteps();
+        }
+        M6 = S6.isActive();
 		vTaskDelay(1);
 	}
 }

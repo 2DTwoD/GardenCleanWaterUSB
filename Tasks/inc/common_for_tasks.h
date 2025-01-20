@@ -16,6 +16,8 @@
 
 struct TaskKit{
 	uint8_t* OBstep;
+	bool* OBauto;
+	bool* OBnext;
 	Sequence* OBs0;
 	SequenceDelayed* OBs1;
 	SequenceDelayed* OBs2;

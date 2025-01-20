@@ -31,6 +31,8 @@ extern Coil M7;
 //Последовательности
 //Бак отстойника1:
 extern uint8_t OB1step;
+extern bool OB1auto;
+extern bool OB1next;
 extern Sequence OB1s0;
 extern SequenceDelayed OB1s1;
 extern SequenceDelayed OB1s2;
@@ -40,6 +42,8 @@ extern Sequence OB1s5;
 
 //Бак отстойника2:
 extern uint8_t OB2step;
+extern bool OB2auto;
+extern bool OB2next;
 extern Sequence OB2s0;
 extern SequenceDelayed OB2s1;
 extern SequenceDelayed OB2s2;
@@ -49,6 +53,8 @@ extern Sequence OB2s5;
 
 //Бак отстойника3:
 extern uint8_t OB3step;
+extern bool OB3auto;
+extern bool OB3next;
 extern Sequence OB3s0;
 extern SequenceDelayed OB3s1;
 extern SequenceDelayed OB3s2;
@@ -58,6 +64,8 @@ extern Sequence OB3s5;
 
 //Чистый бак:
 extern uint8_t CHBstep;
+extern bool CHBauto;
+extern bool CHBnext;
 extern Sequence CHBs0;
 extern SequenceDelayed CHBs1;
 extern Sequence CHBs2;
@@ -110,23 +118,23 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
                     M6.isActive(), M7.isActive());
             sendResponse();
         } else if(!strncmp("chb", parameter, 3)){
-            sprintf((char *)container, patternCHB, CHBstep + 1, 0, CHBs0.getStatus(), CHBs1.getStatus(), CHBs2.getStatus(),
+            sprintf((char *)container, patternCHB, CHBstep + 1, CHBauto, CHBs0.getStatus(), CHBs1.getStatus(), CHBs2.getStatus(),
                     CHBs1.getPeriod(), CHBs1.getTimeRemain(), "000");
             sendResponse();
         } else if(!strncmp("ob1", parameter, 3)){
-            sprintf((char *)container, patternOB, OB1step + 1, 0, OB1s0.getStatus(), OB1s1.getStatus(), OB1s2.getStatus(),
+            sprintf((char *)container, patternOB, OB1step + 1, OB1auto, OB1s0.getStatus(), OB1s1.getStatus(), OB1s2.getStatus(),
                     OB1s3.getStatus(), OB1s4.getStatus(), OB1s5.getStatus(), OB1s1.getPeriod(), OB1s1.getTimeRemain(),
                     OB1s2.getPeriod(), OB1s2.getTimeRemain(), M1.getPeriod(), M1.getTimeRemain(),
                     OB1s4.getPeriod(), OB1s4.getTimeRemain());
             sendResponse();
         } else if(!strncmp("ob2", parameter, 3)){
-            sprintf((char *)container, patternOB, OB2step + 1, 0, OB2s0.getStatus(), OB2s1.getStatus(), OB2s2.getStatus(),
+            sprintf((char *)container, patternOB, OB2step + 1, OB2auto, OB2s0.getStatus(), OB2s1.getStatus(), OB2s2.getStatus(),
                     OB2s3.getStatus(), OB2s4.getStatus(), OB2s5.getStatus(), OB2s1.getPeriod(), OB2s1.getTimeRemain(),
                     OB2s2.getPeriod(), OB2s2.getTimeRemain(), M2.getPeriod(), M2.getTimeRemain(),
                     OB2s4.getPeriod(), OB2s4.getTimeRemain());
             sendResponse();
         } else if(!strncmp("ob3", parameter, 3)){
-            sprintf((char *)container, patternOB, OB3step + 1, 0, OB3s0.getStatus(), OB3s1.getStatus(), OB3s2.getStatus(),
+            sprintf((char *)container, patternOB, OB3step + 1, OB3auto, OB3s0.getStatus(), OB3s1.getStatus(), OB3s2.getStatus(),
                     OB3s3.getStatus(), OB3s4.getStatus(), OB3s5.getStatus(), OB3s1.getPeriod(), OB3s1.getTimeRemain(),
                     OB3s2.getPeriod(), OB3s2.getTimeRemain(), M3.getPeriod(), M3.getTimeRemain(),
                     OB3s4.getPeriod(), OB3s4.getTimeRemain());
@@ -167,17 +175,33 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             M7.setValue(limit((int)value, 0, 1));
         } else if(!strncmp("ob1step", parameter, 7)){
             OB1step = limit((int)value, 0, 6) - 1;
+        } else if(!strncmp("ob1auto", parameter, 7)){
+            OB1auto = limit((int)value, 0, 1) > 0;
+        } else if(!strncmp("ob1next", parameter, 7)){
+            OB1next = limit((int)value, 0, 1) > 0;
         } else if(!strncmp("ob2step", parameter, 7)){
             OB2step = limit((int)value, 0, 6) - 1;
+        } else if(!strncmp("ob2auto", parameter, 7)){
+            OB2auto = limit((int)value, 0, 1) > 0;
+        } else if(!strncmp("ob2next", parameter, 7)){
+            OB2next = limit((int)value, 0, 1) > 0;
         } else if(!strncmp("ob3step", parameter, 7)){
             OB3step = limit((int)value, 0, 6) - 1;
+        } else if(!strncmp("ob3auto", parameter, 7)){
+            OB3auto = limit((int)value, 0, 1) > 0;
+        } else if(!strncmp("ob3next", parameter, 7)){
+            OB3next = limit((int)value, 0, 1) > 0;
         } else if(!strncmp("chbstep", parameter, 7)){
             CHBstep = limit((int)value, 0, 6) - 1;
+        } else if(!strncmp("chbauto", parameter, 7)){
+            CHBauto = limit((int)value, 0, 1) > 0;
+        } else if(!strncmp("chbnext", parameter, 7)){
+            CHBnext = limit((int)value, 0, 1) > 0;
         } else if(!strncmp("ob1s2per", parameter, 8)){
             OB1s1.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob1s3per", parameter, 8)){
             OB1s2.setPeriod(limit((int)value, 1000, 600000));
-        } else if(!strncmp("ob1s4mper", parameter, 9)){
+        } else if(!strncmp("ob1s4per", parameter, 9)){
             M1.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob1s5per", parameter, 8)){
             OB1s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)4294967295));
@@ -185,7 +209,7 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             OB2s1.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob2s3per", parameter, 8)){
             OB2s2.setPeriod(limit((int)value, 1000, 600000));
-        } else if(!strncmp("ob2s4mper", parameter, 9)){
+        } else if(!strncmp("ob2s4per", parameter, 9)){
             M2.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob2s5per", parameter, 8)){
             OB2s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)4294967295));
@@ -193,7 +217,7 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             OB3s1.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob3s3per", parameter, 8)){
             OB3s2.setPeriod(limit((int)value, 1000, 600000));
-        } else if(!strncmp("ob3s4mper", parameter, 9)){
+        } else if(!strncmp("ob3s4per", parameter, 9)){
             M3.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob3s5per", parameter, 8)){
             OB3s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)4294967295));

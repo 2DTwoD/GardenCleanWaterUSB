@@ -42,6 +42,8 @@ Coil led(GPIOC, 13);
 //Последовательности
 //Бак отстойника1:
 uint8_t OB1step;
+bool OB1auto = true;
+bool OB1next;
 Sequence OB1s0(&OB1step, 0);
 SequenceDelayed OB1s1(&OB1step, 1, 120000);//2 минуты
 SequenceDelayed OB1s2(&OB1step, 2, 30000);//30 секунд
@@ -51,6 +53,8 @@ Sequence OB1s5(&OB1step, 5);
 
 //Бак отстойника2:
 uint8_t OB2step;
+bool OB2auto = true;
+bool OB2next;
 Sequence OB2s0(&OB2step, 0);
 SequenceDelayed OB2s1(&OB2step, 1, 120000);//2 минуты
 SequenceDelayed OB2s2(&OB2step, 2, 30000);//30 секунд
@@ -60,6 +64,8 @@ Sequence OB2s5(&OB2step, 5);
 
 //Бак отстойника3:
 uint8_t OB3step;
+bool OB3auto = true;
+bool OB3next;
 Sequence OB3s0(&OB3step, 0);
 SequenceDelayed OB3s1(&OB3step, 1, 120000);//2 минуты
 SequenceDelayed OB3s2(&OB3step, 2, 30000);//30 секунд
@@ -69,6 +75,8 @@ Sequence OB3s5(&OB3step, 5);
 
 //Чистый бак:
 uint8_t CHBstep;
+bool CHBauto = true;
+bool CHBnext;
 Sequence CHBs0(&CHBstep, 0);
 SequenceDelayed CHBs1(&CHBstep, 1, 15000);//15 секунд
 Sequence CHBs2(&CHBstep, 2);
@@ -76,6 +84,8 @@ Sequence CHBs2(&CHBstep, 2);
 //Наборы входов/выходов для бочек отстойника
 TaskKit ob1Kit{
 	&OB1step,
+	&OB1auto,
+	&OB1next,
 	&OB1s0,
 	&OB1s1,
 	&OB1s2,
@@ -91,6 +101,8 @@ TaskKit ob1Kit{
 };
 TaskKit ob2Kit{
 	&OB2step,
+	&OB2auto,
+	&OB2next,
 	&OB2s0,
 	&OB2s1,
 	&OB2s2,
@@ -106,6 +118,8 @@ TaskKit ob2Kit{
 };
 TaskKit ob3Kit{
 	&OB3step,
+	&OB3auto,
+	&OB3next,
 	&OB3s0,
 	&OB3s1,
 	&OB3s2,
