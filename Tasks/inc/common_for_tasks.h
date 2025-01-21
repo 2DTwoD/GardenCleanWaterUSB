@@ -1,6 +1,8 @@
 #ifndef COMMON_FOR_TASKS_H
 #define COMMON_FOR_TASKS_H
 
+#define NUM_OF_TANKS 3
+
 #include "FreeRTOS.h"
 #include "task.h"
 
@@ -36,5 +38,7 @@ void pushSeqInQueue(Sequence *seq);
 Sequence* getSeqFromQueue();
 void deleteSeqFromQueue(Sequence *seq);
 void resetCHBsteps();
+void getQueueString(char* result);
+bool queueIsEmpty();
 
 #endif //COMMON_FOR_TASKS_H

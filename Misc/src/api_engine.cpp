@@ -70,6 +70,12 @@ extern Sequence CHBs0;
 extern SequenceDelayed CHBs1;
 extern Sequence CHBs2;
 
+//Задачи для баков
+extern TaskHandle_t OB1TaskHandle;
+extern TaskHandle_t OB2TaskHandle;
+extern TaskHandle_t OB3TaskHandle;
+extern TaskHandle_t CHBTaskHandle;
+
 static const char *patternPeriph = "{'H1':%d,'H2':%d,'H3':%d,'B1':%d,'B2':%d,'B3':%d,'S4':%d,'S5':%d,'S6':%d,"
                       "'C1':%d,'C2':%d,'C3':%d,'O1':%d,'O2':%d,'O3':%d,'D1':%d,'D2':%d,'D3':%d,'D4':%d,"
                       "'M1':%d,'M2':%d,'M3':%d,'M6':%d,'M7':%d}";
@@ -108,6 +114,7 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
     zeroAndFill(parameter, strtok(nullptr, "."));
     zeroAndFill(strValue, strtok(nullptr, "."));
     uint32_t value = atoi(strValue);
+    taskENTER_CRITICAL();
     if(!strncmp("get", action, 3)){
         memset(container, 0, CONTAINER_LEN);
         if(!strncmp("periph", parameter, 6)){
@@ -118,8 +125,10 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
                     M6.isActive(), M7.isActive());
             sendResponse();
         } else if(!strncmp("chb", parameter, 3)){
+            char queue[] = "000";
+            getQueueString(queue);
             sprintf((char *)container, patternCHB, CHBstep + 1, CHBauto, CHBs0.getStatus(), CHBs1.getStatus(), CHBs2.getStatus(),
-                    CHBs1.getPeriod(), CHBs1.getTimeRemain(), "000");
+                    CHBs1.getPeriod(), CHBs1.getTimeRemain(), queue);
             sendResponse();
         } else if(!strncmp("ob1", parameter, 3)){
             sprintf((char *)container, patternOB, OB1step + 1, OB1auto, OB1s0.getStatus(), OB1s1.getStatus(), OB1s2.getStatus(),
@@ -143,60 +152,72 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             sendRespText("wrong get command");
         }
     } else if(!strncmp("set", action, 3)){
-        if(!strncmp("c1", parameter, 2)){
+        if(!OB1auto && !strncmp("c1", parameter, 2)){
             C1.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("c2", parameter, 2)){
+        } else if(!OB2auto && !strncmp("c2", parameter, 2)){
             C2.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("c3", parameter, 2)){
+        } else if(!OB3auto && !strncmp("c3", parameter, 2)){
             C3.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("o1", parameter, 2)){
+        } else if(!OB1auto && !strncmp("o1", parameter, 2)){
             O1.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("o2", parameter, 2)){
+        } else if(!OB2auto && !strncmp("o2", parameter, 2)){
             O2.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("o3", parameter, 2)){
+        } else if(!OB3auto && !strncmp("o3", parameter, 2)){
             O3.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("d1", parameter, 2)){
+        } else if(!OB1auto && !strncmp("d1", parameter, 2)){
             D1.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("d2", parameter, 2)){
+        } else if(!OB2auto && !strncmp("d2", parameter, 2)){
             D2.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("d3", parameter, 2)){
+        } else if(!OB3auto && !strncmp("d3", parameter, 2)){
             D3.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("d4", parameter, 2)){
+        } else if(!CHBauto && !strncmp("d4", parameter, 2)){
             D4.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("m1", parameter, 2)){
+        } else if(!OB1auto && !strncmp("m1", parameter, 2)){
             M1.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("m2", parameter, 2)){
+        } else if(!OB2auto && !strncmp("m2", parameter, 2)){
             M2.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("m3", parameter, 2)){
+        } else if(!OB3auto && !strncmp("m3", parameter, 2)){
             M3.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("m6", parameter, 2)){
+        } else if(!CHBauto && !strncmp("m6", parameter, 2)){
             M6.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("m7", parameter, 2)){
+        } else if(!CHBauto && !strncmp("m7", parameter, 2)){
             M7.setValue(limit((int)value, 0, 1));
-        } else if(!strncmp("ob1step", parameter, 7)){
+        } else if(OB1auto && !strncmp("ob1step", parameter, 7)){
             OB1step = limit((int)value, 0, 6) - 1;
         } else if(!strncmp("ob1auto", parameter, 7)){
-            OB1auto = limit((int)value, 0, 1) > 0;
-        } else if(!strncmp("ob1next", parameter, 7)){
-            OB1next = limit((int)value, 0, 1) > 0;
-        } else if(!strncmp("ob2step", parameter, 7)){
+            OB1auto = value > 0;
+            if(OB1auto){
+                vTaskResume(OB1TaskHandle);
+            }
+        } else if(OB1auto && !strncmp("ob1next", parameter, 7)){
+            OB1next = value > 0;
+        } else if(OB2auto && !strncmp("ob2step", parameter, 7)){
             OB2step = limit((int)value, 0, 6) - 1;
         } else if(!strncmp("ob2auto", parameter, 7)){
-            OB2auto = limit((int)value, 0, 1) > 0;
-        } else if(!strncmp("ob2next", parameter, 7)){
-            OB2next = limit((int)value, 0, 1) > 0;
-        } else if(!strncmp("ob3step", parameter, 7)){
+            OB2auto = value > 0;
+            if(OB2auto){
+                vTaskResume(OB2TaskHandle);
+            }
+        } else if(OB2auto && !strncmp("ob2next", parameter, 7)){
+            OB2next = value > 0;
+        } else if(OB3auto && !strncmp("ob3step", parameter, 7)){
             OB3step = limit((int)value, 0, 6) - 1;
         } else if(!strncmp("ob3auto", parameter, 7)){
-            OB3auto = limit((int)value, 0, 1) > 0;
-        } else if(!strncmp("ob3next", parameter, 7)){
-            OB3next = limit((int)value, 0, 1) > 0;
-        } else if(!strncmp("chbstep", parameter, 7)){
+            OB3auto = value > 0;
+            if(OB3auto){
+                vTaskResume(OB3TaskHandle);
+            }
+        } else if(OB3auto && !strncmp("ob3next", parameter, 7)){
+            OB3next = value > 0;
+        } else if(CHBauto && !strncmp("chbstep", parameter, 7)){
             CHBstep = limit((int)value, 0, 6) - 1;
         } else if(!strncmp("chbauto", parameter, 7)){
-            CHBauto = limit((int)value, 0, 1) > 0;
-        } else if(!strncmp("chbnext", parameter, 7)){
-            CHBnext = limit((int)value, 0, 1) > 0;
+            CHBauto = value > 0;
+            if(CHBauto){
+                vTaskResume(CHBTaskHandle);
+            }
+        } else if(CHBauto && !strncmp("chbnext", parameter, 7)){
+            CHBnext = value > 0;
         } else if(!strncmp("ob1s2per", parameter, 8)){
             OB1s1.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob1s3per", parameter, 8)){
@@ -204,7 +225,7 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
         } else if(!strncmp("ob1s4per", parameter, 9)){
             M1.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob1s5per", parameter, 8)){
-            OB1s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)4294967295));
+            OB1s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)999999000));
         } else if(!strncmp("ob2s2per", parameter, 8)){
             OB2s1.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob2s3per", parameter, 8)){
@@ -212,7 +233,7 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
         } else if(!strncmp("ob2s4per", parameter, 9)){
             M2.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob2s5per", parameter, 8)){
-            OB2s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)4294967295));
+            OB2s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)999999000));
         } else if(!strncmp("ob3s2per", parameter, 8)){
             OB3s1.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob3s3per", parameter, 8)){
@@ -220,15 +241,18 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
         } else if(!strncmp("ob3s4per", parameter, 9)){
             M3.setPeriod(limit((int)value, 1000, 600000));
         } else if(!strncmp("ob3s5per", parameter, 8)){
-            OB3s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)4294967295));
+            OB3s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)999999000));
         } else if(!strncmp("chbs2per", parameter, 8)){
             CHBs1.setPeriod(limit((int)value, 1000, 600000));
         }  else {
             sendRespText("wrong set command");
+            taskEXIT_CRITICAL();
             return;
         }
+
         sendRespText("ok");
     } else if(!strncmp("ping", action, 4)){
         sendRespText("pong");
     }
+    taskEXIT_CRITICAL();
 }

@@ -11,7 +11,6 @@
 
 extern uint8_t updateObjectsSize;
 extern IUpdated1ms *update1msObjects[];
-extern xQueueHandle commQueue;
 //uint32_t idleCount;
 int mainApp(void);
 

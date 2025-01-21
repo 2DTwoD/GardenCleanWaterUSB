@@ -21,8 +21,7 @@ void CHBTask(void *pvParameters){
             CHBs0.lock(true);
             CHBs1.lock(true);
             CHBs2.lock(true);
-            CHBnext = false;
-            continue;
+            vTaskSuspend(nullptr);
         }
 		if(CHBs0.finishedImpulse() && current_ob != nullptr){
 			current_ob->start(true);
@@ -46,13 +45,14 @@ void CHBTask(void *pvParameters){
             case 2:
                 CHBs2.start(true);
                 CHBs2.lock(S4.isActive());
-                CHBs2.finish(CHBnext);
+                CHBs2.finish(CHBnext || queueIsEmpty());
                 D4 = false;
                 M7 = CHBs2.active();
                 break;
             default:
                 resetCHBsteps();
         }
+        CHBnext = false;
         M6 = S6.isActive();
 		vTaskDelay(1);
 	}

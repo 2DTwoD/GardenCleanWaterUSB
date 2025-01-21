@@ -27,8 +27,7 @@ void OBTask(void *pvParameters){
             obKit->OBs3->lock(true);
             obKit->OBs4->lock(true);
             obKit->OBs5->lock(true);
-            *obKit->OBnext = false;
-            continue;
+            vTaskSuspend(nullptr);
         }
 		if(obKit->OBs4->finishedImpulse()){
 			pushSeqInQueue(obKit->OBs5);
@@ -82,7 +81,7 @@ void OBTask(void *pvParameters){
 				break;
 			case 5:
 				obKit->OBs5->lock(CHBs2.locked());
-				obKit->OBs5->finish(obKit->H->isNotActive() || *obKit->OBnext);
+				//obKit->OBs5->finish(obKit->H->isNotActive() || *obKit->OBnext);
 				*obKit->C = false;
 				*obKit->O = obKit->OBs5->active();
 				*obKit->D = false;

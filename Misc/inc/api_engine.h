@@ -13,6 +13,7 @@
 #include "coil_with_timer.h"
 #include "simple_input.h"
 #include "sequence.h"
+#include "common_for_tasks.h"
 
 //Максимальная длина команды
 #define MAX_COMMAND_LEN 256

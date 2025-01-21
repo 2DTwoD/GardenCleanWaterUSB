@@ -10,6 +10,7 @@
 #include "pulse.h"
 #include "common_for_tasks.h"
 #include "queue.h"
+#include "api_engine.h"
 
 //Входа/выхода
 SimpleInputDelayed B1(GPIOA, 0, 500);
@@ -134,7 +135,7 @@ TaskKit ob3Kit{
 	&M3,
 };
 
-//Очередь
+//Очередь баков
 Sequence *queue[] = {nullptr, nullptr, nullptr};
 
 IUpdated1ms *update1msObjects[] = {
@@ -165,7 +166,14 @@ IUpdated1ms *update1msObjects[] = {
 
 uint8_t updateObjectsSize = sizeof(update1msObjects) / sizeof(*update1msObjects);
 
-xQueueHandle commQueue;
+//Очередь для связи по COM порту
+xQueueHandle commQueue = xQueueCreate(MAX_COMMAND_LEN, sizeof (uint8_t));
+
+//Задачи для баков
+TaskHandle_t OB1TaskHandle = nullptr;
+TaskHandle_t OB2TaskHandle = nullptr;
+TaskHandle_t OB3TaskHandle = nullptr;
+TaskHandle_t CHBTaskHandle = nullptr;
 
 extern "C"{
 void vApplicationIdleHook ( void ){
@@ -184,7 +192,9 @@ void vApplicationStackOverflowHook( TaskHandle_t xTask, char * pcTaskName ){
 void TIM2_IRQHandler(void){
     TIM2->SR &= ~TIM_SR_UIF;
     for(int i = 0; i < updateObjectsSize; i++){
+        taskENTER_CRITICAL();
         update1msObjects[i]->update1ms();
+        taskEXIT_CRITICAL();
     }
 }
 }
