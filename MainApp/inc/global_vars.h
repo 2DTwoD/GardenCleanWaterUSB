@@ -192,9 +192,7 @@ void vApplicationStackOverflowHook( TaskHandle_t xTask, char * pcTaskName ){
 void TIM2_IRQHandler(void){
     TIM2->SR &= ~TIM_SR_UIF;
     for(int i = 0; i < updateObjectsSize; i++){
-        taskENTER_CRITICAL();
         update1msObjects[i]->update1ms();
-        taskEXIT_CRITICAL();
     }
 }
 }

@@ -16,7 +16,7 @@
 #include "common_for_tasks.h"
 
 //Максимальная длина команды
-#define MAX_COMMAND_LEN 256
+#define MAX_COMMAND_LEN 50
 
 void checkCommandAndSendResponse(uint8_t *command, uint8_t len);
 

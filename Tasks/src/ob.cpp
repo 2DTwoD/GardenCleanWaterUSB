@@ -93,8 +93,8 @@ void OBTask(void *pvParameters){
 				if(getSeqFromQueue() == obKit->OBs5){
 					resetCHBsteps();
 				}
-				taskEXIT_CRITICAL();
 				deleteSeqFromQueue(obKit->OBs5);
+                taskEXIT_CRITICAL();
 				resetAllSteps(obKit);
 		}
         *obKit->OBnext = false;

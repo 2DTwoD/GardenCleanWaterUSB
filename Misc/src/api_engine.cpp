@@ -76,18 +76,18 @@ extern TaskHandle_t OB2TaskHandle;
 extern TaskHandle_t OB3TaskHandle;
 extern TaskHandle_t CHBTaskHandle;
 
-static const char *patternPeriph = "{'H1':%d,'H2':%d,'H3':%d,'B1':%d,'B2':%d,'B3':%d,'S4':%d,'S5':%d,'S6':%d,"
+const char *patternPeriph = "{'H1':%d,'H2':%d,'H3':%d,'B1':%d,'B2':%d,'B3':%d,'S4':%d,'S5':%d,'S6':%d,"
                       "'C1':%d,'C2':%d,'C3':%d,'O1':%d,'O2':%d,'O3':%d,'D1':%d,'D2':%d,'D3':%d,'D4':%d,"
                       "'M1':%d,'M2':%d,'M3':%d,'M6':%d,'M7':%d}";
 
-static const char *patternCHB = "{'step':%d,'auto':%d,'s1St':%d,'s2St':%d,'s3St':%d,"
+const char *patternCHB = "{'step':%d,'auto':%d,'s1St':%d,'s2St':%d,'s3St':%d,"
                                 "'s2Per':%d,'s2TimeRem':%d,'queue':'%s'}";
 
-static const char *patternOB = "{'step':%d,'auto':%d,'s1St':%d,'s2St':%d,'s3St':%d,'s4St':%d,'s5St':%d,'s6St':%d,"
+const char *patternOB = "{'step':%d,'auto':%d,'s1St':%d,'s2St':%d,'s3St':%d,'s4St':%d,'s5St':%d,'s6St':%d,"
                             "'s2Per':%d,'s2TimeRem':%d,'s3Per':%d,'s3TimeRem':%d,"
                             "'s4Per':%d,'s4TimeRem':%d,'s5Per':%d,'s5TimeRem':%d}";
 
-static uint8_t container[CONTAINER_LEN];
+uint8_t container[CONTAINER_LEN];
 
 void sendRespText(const char *text){
     taskENTER_CRITICAL();
@@ -114,7 +114,6 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
     zeroAndFill(parameter, strtok(nullptr, "."));
     zeroAndFill(strValue, strtok(nullptr, "."));
     uint32_t value = atoi(strValue);
-    taskENTER_CRITICAL();
     if(!strncmp("get", action, 3)){
         memset(container, 0, CONTAINER_LEN);
         if(!strncmp("periph", parameter, 6)){
@@ -182,8 +181,8 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             M6.setValue(limit((int)value, 0, 1));
         } else if(!CHBauto && !strncmp("m7", parameter, 2)){
             M7.setValue(limit((int)value, 0, 1));
-        } else if(OB1auto && !strncmp("ob1step", parameter, 7)){
-            OB1step = limit((int)value, 0, 6) - 1;
+        } else if(OB1auto && !strncmp("ob1again", parameter, 8)){
+            OB1step = 6;
         } else if(!strncmp("ob1auto", parameter, 7)){
             OB1auto = value > 0;
             if(OB1auto){
@@ -191,8 +190,8 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             }
         } else if(OB1auto && !strncmp("ob1next", parameter, 7)){
             OB1next = value > 0;
-        } else if(OB2auto && !strncmp("ob2step", parameter, 7)){
-            OB2step = limit((int)value, 0, 6) - 1;
+        } else if(OB2auto && !strncmp("ob2again", parameter, 8)){
+            OB2step = 6;
         } else if(!strncmp("ob2auto", parameter, 7)){
             OB2auto = value > 0;
             if(OB2auto){
@@ -200,8 +199,8 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             }
         } else if(OB2auto && !strncmp("ob2next", parameter, 7)){
             OB2next = value > 0;
-        } else if(OB3auto && !strncmp("ob3step", parameter, 7)){
-            OB3step = limit((int)value, 0, 6) - 1;
+        } else if(OB3auto && !strncmp("ob3again", parameter, 8)){
+            OB3step = 6;
         } else if(!strncmp("ob3auto", parameter, 7)){
             OB3auto = value > 0;
             if(OB3auto){
@@ -209,8 +208,8 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             }
         } else if(OB3auto && !strncmp("ob3next", parameter, 7)){
             OB3next = value > 0;
-        } else if(CHBauto && !strncmp("chbstep", parameter, 7)){
-            CHBstep = limit((int)value, 0, 6) - 1;
+        } else if(CHBauto && !strncmp("chbagain", parameter, 7)){
+            CHBstep = 3;
         } else if(!strncmp("chbauto", parameter, 7)){
             CHBauto = value > 0;
             if(CHBauto){
@@ -246,7 +245,6 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             CHBs1.setPeriod(limit((int)value, 1000, 600000));
         }  else {
             sendRespText("wrong set command");
-            taskEXIT_CRITICAL();
             return;
         }
 
@@ -254,5 +252,4 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
     } else if(!strncmp("ping", action, 4)){
         sendRespText("pong");
     }
-    taskEXIT_CRITICAL();
 }

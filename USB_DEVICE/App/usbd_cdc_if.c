@@ -261,16 +261,17 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
+  //UBaseType_t status =  taskENTER_CRITICAL_FROM_ISR();
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
 
   //portBASE_TYPE xHigherPriorityTaskWoken;
   for(uint32_t i = 0; i < *Len; i++){
       xQueueSend(commQueue, Buf + i, portMAX_DELAY);
-      /*xQueueSendFromISR(commQueue, Buf + i, &xHigherPriorityTaskWoken);
-      portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);*/
+      //xQueueSendFromISR(commQueue, Buf + i, &xHigherPriorityTaskWoken);
+      //portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);
   }
-
+  //taskEXIT_CRITICAL_FROM_ISR(status);
   return (USBD_OK);
   /* USER CODE END 6 */
 }
