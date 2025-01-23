@@ -1,6 +1,7 @@
 #include "all_tasks.h"
 
 extern Sequence CHBs2;
+extern SimpleInputDelayed S4;
 	
 void resetAllSteps(TaskKit* taskKit){
 	taskKit->OBs0->reset();
@@ -80,9 +81,9 @@ void OBTask(void *pvParameters){
 				*obKit->M = false;
 				break;
 			case 5:
-				obKit->OBs5->lock(CHBs2.locked());
-				//obKit->OBs5->finish(obKit->H->isNotActive() || *obKit->OBnext);
-				*obKit->C = false;
+				obKit->OBs5->lock(S4.isActive());
+				obKit->OBs5->finish(*obKit->OBnext);//obKit->H->isNotActive() ||
+                *obKit->C = false;
 				*obKit->O = obKit->OBs5->active();
 				*obKit->D = false;
 				*obKit->M = false;

@@ -72,6 +72,7 @@ bool queueIsEmpty(){
     taskENTER_CRITICAL();
     for(uint8_t i = 0; i < NUM_OF_TANKS; i++){
         if(queue[i] != nullptr){
+            taskEXIT_CRITICAL();
             return false;
         }
     }

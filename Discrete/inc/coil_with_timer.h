@@ -53,7 +53,7 @@ class CoilPulse: private PulseCommon, public Coil, public IUpdated1ms  {
         using PulseCommon::getPeriod;
         using PulseCommon::setPeriod;
         using PulseCommon::getTimeRemain;
-		CoilPulse(GPIO_TypeDef *gpio, uint8_t pin, uint16_t delay);
+		CoilPulse(GPIO_TypeDef *gpio, uint8_t pin, uint16_t pulse);
 	
 		void update1ms() override;
 	

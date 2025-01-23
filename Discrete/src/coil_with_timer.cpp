@@ -39,7 +39,7 @@ void CoilOffDelay::resetTimer() {
 }
 
 //CoilPulse
-CoilPulse::CoilPulse(GPIO_TypeDef *gpio, uint8_t pin, uint16_t delay): Coil(gpio, pin), PulseCommon(delay) {
+CoilPulse::CoilPulse(GPIO_TypeDef *gpio, uint8_t pin, uint16_t pulse): Coil(gpio, pin), PulseCommon(pulse) {
 }
 void CoilPulse::update1ms() {
 	PulseCommon::update();

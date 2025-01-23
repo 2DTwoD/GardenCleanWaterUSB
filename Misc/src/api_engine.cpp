@@ -1,6 +1,6 @@
 #include "api_engine.h"
 
-#define CONTAINER_LEN 512
+#define CONTAINER_LEN 256
 
 extern SimpleInputDelayed B1;
 extern SimpleInputDelayed H1;
