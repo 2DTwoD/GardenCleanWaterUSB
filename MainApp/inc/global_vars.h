@@ -25,20 +25,25 @@ SimpleInputDelayed S6(GPIOA, 8, 5000);
 Coil C1(GPIOA, 9);
 Coil O1(GPIOA, 10);
 Coil D1(GPIOA, 15);
-CoilPulse M1(GPIOB, 0, 2000);
+Coil M1(GPIOB, 0);
 Coil C2(GPIOB, 1);
 Coil O2(GPIOB, 3);
 Coil D2(GPIOB, 4);
-CoilPulse M2(GPIOB, 5, 2000);
+Coil M2(GPIOB, 5);
 Coil C3(GPIOB, 6);
 Coil O3(GPIOB, 7);
 Coil D3(GPIOB, 8);
-CoilPulse M3(GPIOB, 9, 20000);
+Coil M3(GPIOB, 9);
 Coil D4(GPIOB, 10);
-CoilOffDelay M6(GPIOB, 11, 5000);
+Coil M6(GPIOB, 11);
 Coil M7(GPIOB, 12);
 //Светодиод на blue pill
 Coil led(GPIOC, 13);
+//Таймеры для M1-M3, M6
+Pulse M1timer(20000);
+Pulse M2timer(20000);
+Pulse M3timer(20000);
+OffDelay M6timer(5000);
 
 //Последовательности
 //Бак отстойника1:
@@ -99,6 +104,7 @@ TaskKit ob1Kit{
 	&O1,
 	&D1,
 	&M1,
+	&M1timer
 };
 TaskKit ob2Kit{
 	&OB2step,
@@ -116,6 +122,7 @@ TaskKit ob2Kit{
 	&O2,
 	&D2,
 	&M2,
+    &M2timer
 };
 TaskKit ob3Kit{
 	&OB3step,
@@ -133,6 +140,7 @@ TaskKit ob3Kit{
 	&O3,
 	&D3,
 	&M3,
+    &M3timer
 };
 
 //Очередь баков
@@ -148,10 +156,10 @@ IUpdated1ms *update1msObjects[] = {
 	&S4,
 	&S5,
 	&S6,
-	&M1,
-	&M2,
-	&M3,
-	&M6,
+	&M1timer,
+	&M2timer,
+	&M3timer,
+	&M6timer,
 	&OB1s1,
 	&OB1s2,
 	&OB1s4,

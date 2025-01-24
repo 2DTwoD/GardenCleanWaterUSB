@@ -10,7 +10,7 @@ void resetAllSteps(TaskKit* taskKit){
 	taskKit->OBs3->reset();
 	taskKit->OBs4->reset();
 	taskKit->OBs5->reset();
-    taskKit->M->resetTimer();
+    taskKit->Mtimer->reset();
 	*taskKit->C = false;
 	*taskKit->O = false;
 	*taskKit->D = false;
@@ -28,6 +28,7 @@ void OBTask(void *pvParameters){
             obKit->OBs3->lock(true);
             obKit->OBs4->lock(true);
             obKit->OBs5->lock(true);
+            obKit->Mtimer->setPause(true);
             vTaskSuspend(nullptr);
         }
 		if(obKit->OBs4->finishedImpulse()){
@@ -66,10 +67,12 @@ void OBTask(void *pvParameters){
 				*obKit->C = obKit->OBs3->active();
 				*obKit->O = false;
 				*obKit->D = false;
-                *obKit->M = obKit->OBs3->active();
-                if(obKit->OBs3->finished() && obKit->M->isActive()){
-                    obKit->M->resetTimer();
+                obKit->Mtimer->setPause(false);
+                *obKit->Mtimer = obKit->OBs3->active();
+                if(obKit->OBs3->finished()){
+                    obKit->Mtimer->setPause(true);
                 }
+                *obKit->M = obKit->Mtimer->get();
 				break;
 			case 4:
 				obKit->OBs4->start(true);

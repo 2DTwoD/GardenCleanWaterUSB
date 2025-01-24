@@ -31,8 +31,9 @@ struct TaskKit{
 	Coil* C;
 	Coil* O;
 	Coil* D;
-	CoilPulse* M;
-}; 
+	Coil* M;
+	Pulse* Mtimer;
+};
 
 void pushSeqInQueue(Sequence *seq);
 Sequence* getSeqFromQueue();

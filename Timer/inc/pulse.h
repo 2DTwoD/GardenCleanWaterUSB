@@ -16,6 +16,7 @@ class PulseCommon: private CommonTimer {
         using CommonTimer::getPeriod;
         using CommonTimer::setPeriod;
         using CommonTimer::getTimeRemain;
+        using CommonTimer::setPause;
 };
 
 class Pulse: public PulseCommon, public IUpdated1ms {

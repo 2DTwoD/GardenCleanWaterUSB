@@ -11,8 +11,10 @@ extern SimpleInputDelayed S4;
 extern SimpleInputDelayed S5;
 extern SimpleInputDelayed S6;
 extern Coil D4;
-extern CoilOffDelay M6;
+extern Coil M6;
 extern Coil M7;
+
+extern OffDelay M6timer;
 
 void CHBTask(void *pvParameters){
 	Sequence *current_ob = nullptr;
@@ -53,7 +55,8 @@ void CHBTask(void *pvParameters){
                 resetCHBsteps();
         }
         CHBnext = false;
-        M6 = S6.isActive();
+        M6timer = CHBstep == 1;//S6.isActive();
+        M6 = M6timer.get();
 		vTaskDelay(1);
 	}
 }
