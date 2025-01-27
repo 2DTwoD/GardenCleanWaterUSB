@@ -40,10 +40,10 @@ Coil M7(GPIOB, 12);
 //Светодиод на blue pill
 Coil led(GPIOC, 13);
 //Таймеры для M1-M3, M6
-Pulse M1timer(20000);
-Pulse M2timer(20000);
-Pulse M3timer(20000);
-OffDelay M6timer(5000);
+Pulse M1timer(20000);//20 секунд дозирование в бак отстойник 1
+Pulse M2timer(20000);//20 секунд дозирование в бак отстойник 2
+Pulse M3timer(20000);//20 секунд дозирование в бак отстойник 3
+OffDelay M6timer(5000);//5 секунд задержка выключения М6 в автомате
 
 //Последовательности
 //Бак отстойника1:
@@ -183,25 +183,4 @@ TaskHandle_t OB2TaskHandle = nullptr;
 TaskHandle_t OB3TaskHandle = nullptr;
 TaskHandle_t CHBTaskHandle = nullptr;
 
-extern "C"{
-void vApplicationIdleHook ( void ){
-    //idleCount++;
-}
-void vApplicationTickHook ( void ){
-}
-void vApplicationMallocFailedHook ( void ){
-    while(1);
-}
-void vApplicationStackOverflowHook( TaskHandle_t xTask, char * pcTaskName ){
-    ( void ) pcTaskName;
-    ( void ) xTask;
-    while(1);
-}
-void TIM2_IRQHandler(void){
-    TIM2->SR &= ~TIM_SR_UIF;
-    for(int i = 0; i < updateObjectsSize; i++){
-        update1msObjects[i]->update1ms();
-    }
-}
-}
 #endif //GLOBAL_VARS_H

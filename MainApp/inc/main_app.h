@@ -8,6 +8,7 @@
 #include "init.h"
 #include "all_tasks.h"
 #include "api_engine.h"
+#include "flash.h"
 
 extern uint8_t updateObjectsSize;
 extern IUpdated1ms *update1msObjects[];

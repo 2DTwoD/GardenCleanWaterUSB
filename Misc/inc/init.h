@@ -4,10 +4,10 @@
 #include "common.h"
 #include "common_timer.h"
 
-void commonInit();
+//void commonInit();
 //void rccInit();
 void tickInit();
-void adcInit();
-void pwmInit();
+//void adcInit();
+//void pwmInit();
 
 #endif //INIT_H

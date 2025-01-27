@@ -67,11 +67,12 @@ void OBTask(void *pvParameters){
 				*obKit->C = obKit->OBs3->active();
 				*obKit->O = false;
 				*obKit->D = false;
-                obKit->Mtimer->setPause(false);
-                *obKit->Mtimer = obKit->OBs3->active();
                 if(obKit->OBs3->finished()){
                     obKit->Mtimer->setPause(true);
+                } else {
+                    obKit->Mtimer->setPause(false);
                 }
+                *obKit->Mtimer = obKit->OBs3->active();
                 *obKit->M = obKit->Mtimer->get();
 				break;
 			case 4:

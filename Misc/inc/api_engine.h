@@ -14,6 +14,7 @@
 #include "simple_input.h"
 #include "sequence.h"
 #include "common_for_tasks.h"
+#include "flash.h"
 
 //Максимальная длина команды
 #define MAX_COMMAND_LEN 50

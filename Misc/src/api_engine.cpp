@@ -218,30 +218,43 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             CHBnext = value > 0;
         } else if(!strncmp("ob1s2per", parameter, 8)){
             OB1s1.setPeriod(limit((int)value, 1000, 600000));
+            saveFlash();
         } else if(!strncmp("ob1s3per", parameter, 8)){
             OB1s2.setPeriod(limit((int)value, 1000, 600000));
+            saveFlash();
         } else if(!strncmp("ob1s4per", parameter, 9)){
             M1timer.setPeriod(limit((int)value, 1000, 600000));
+            saveFlash();
         } else if(!strncmp("ob1s5per", parameter, 8)){
             OB1s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)999999000));
+            saveFlash();
         } else if(!strncmp("ob2s2per", parameter, 8)){
             OB2s1.setPeriod(limit((int)value, 1000, 600000));
+            saveFlash();
         } else if(!strncmp("ob2s3per", parameter, 8)){
             OB2s2.setPeriod(limit((int)value, 1000, 600000));
+            saveFlash();
         } else if(!strncmp("ob2s4per", parameter, 9)){
             M2timer.setPeriod(limit((int)value, 1000, 600000));
+            saveFlash();
         } else if(!strncmp("ob2s5per", parameter, 8)){
             OB2s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)999999000));
+            saveFlash();
         } else if(!strncmp("ob3s2per", parameter, 8)){
             OB3s1.setPeriod(limit((int)value, 1000, 600000));
+            saveFlash();
         } else if(!strncmp("ob3s3per", parameter, 8)){
             OB3s2.setPeriod(limit((int)value, 1000, 600000));
+            saveFlash();
         } else if(!strncmp("ob3s4per", parameter, 9)){
             M3timer.setPeriod(limit((int)value, 1000, 600000));
+            saveFlash();
         } else if(!strncmp("ob3s5per", parameter, 8)){
             OB3s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)999999000));
+            saveFlash();
         } else if(!strncmp("chbs2per", parameter, 8)){
             CHBs1.setPeriod(limit((int)value, 1000, 600000));
+            saveFlash();
         } else if(!strncmp("allauto", parameter, 7)){
             setAuto(&OB1TaskHandle, &OB1auto, value);
             setAuto(&OB2TaskHandle, &OB2auto, value);
