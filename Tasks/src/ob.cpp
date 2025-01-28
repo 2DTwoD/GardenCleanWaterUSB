@@ -86,7 +86,7 @@ void OBTask(void *pvParameters){
 				break;
 			case 5:
 				obKit->OBs5->lock(S4.isActive());
-				obKit->OBs5->finish(*obKit->OBnext);//obKit->H->isNotActive() ||
+				obKit->OBs5->finish(obKit->H->isNotActive() ||*obKit->OBnext);
                 *obKit->C = false;
 				*obKit->O = obKit->OBs5->active();
 				*obKit->D = false;

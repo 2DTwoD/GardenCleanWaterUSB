@@ -55,7 +55,7 @@ void CHBTask(void *pvParameters){
                 resetCHBsteps();
         }
         CHBnext = false;
-        M6timer = CHBstep == 1;//S6.isActive();
+        M6timer = S6.isActive();
         M6 = M6timer.get();
 		vTaskDelay(1);
 	}
