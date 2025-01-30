@@ -10,9 +10,11 @@
 #include "api_engine.h"
 #include "flash.h"
 
+//Версия прошивки
+#define FIRMWARE_VER "v 1.0.0"
+
 extern uint8_t updateObjectsSize;
 extern IUpdated1ms *update1msObjects[];
 //uint32_t idleCount;
 int mainApp(void);
-
 #endif //MAIN_APP_H

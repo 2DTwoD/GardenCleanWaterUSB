@@ -125,142 +125,144 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
     zeroAndFill(parameter, strtok(nullptr, "."));
     zeroAndFill(strValue, strtok(nullptr, "."));
     uint32_t value = atoi(strValue);
-    if(!strncmp("get", action, 3)){
+    if(!strcmp("get", action)){
         memset(container, 0, CONTAINER_LEN);
-        if(!strncmp("periph", parameter, 6)){
+        if(!strcmp("periph", parameter)){
             sprintf((char *)container, patternPeriph, H1.isActive(), H2.isActive(), H3.isActive(), B1.isActive(),
                     B2.isActive(), B3.isActive(), S4.isActive(), S5.isActive(), S6.isActive(), C1.isActive(),
                     C2.isActive(), C3.isActive(), O1.isActive(), O2.isActive(), O3.isActive(), D1.isActive(),
                     D2.isActive(), D3.isActive(), D4.isActive(), M1.isActive(), M2.isActive(), M3.isActive(),
                     M6.isActive(), M7.isActive());
             sendResponse();
-        } else if(!strncmp("chb", parameter, 3)){
+        } else if(!strcmp("chb", parameter)){
             char queue[] = "000";
             getQueueString(queue);
             sprintf((char *)container, patternCHB, CHBstep + 1, CHBauto, CHBs0.getStatus(), CHBs1.getStatus(), CHBs2.getStatus(),
                     CHBs1.getPeriod(), CHBs1.getTimeRemain(), queue);
             sendResponse();
-        } else if(!strncmp("ob1", parameter, 3)){
+        } else if(!strcmp("ob1", parameter)){
             sprintf((char *)container, patternOB, OB1step + 1, OB1auto, OB1s0.getStatus(), OB1s1.getStatus(), OB1s2.getStatus(),
                     OB1s3.getStatus(), OB1s4.getStatus(), OB1s5.getStatus(), OB1s1.getPeriod(), OB1s1.getTimeRemain(),
                     OB1s2.getPeriod(), OB1s2.getTimeRemain(), M1timer.getPeriod(), M1timer.getTimeRemain(),
                     OB1s4.getPeriod(), OB1s4.getTimeRemain());
             sendResponse();
-        } else if(!strncmp("ob2", parameter, 3)){
+        } else if(!strcmp("ob2", parameter)){
             sprintf((char *)container, patternOB, OB2step + 1, OB2auto, OB2s0.getStatus(), OB2s1.getStatus(), OB2s2.getStatus(),
                     OB2s3.getStatus(), OB2s4.getStatus(), OB2s5.getStatus(), OB2s1.getPeriod(), OB2s1.getTimeRemain(),
                     OB2s2.getPeriod(), OB2s2.getTimeRemain(), M2timer.getPeriod(), M2timer.getTimeRemain(),
                     OB2s4.getPeriod(), OB2s4.getTimeRemain());
             sendResponse();
-        } else if(!strncmp("ob3", parameter, 3)){
+        } else if(!strcmp("ob3", parameter)){
             sprintf((char *)container, patternOB, OB3step + 1, OB3auto, OB3s0.getStatus(), OB3s1.getStatus(), OB3s2.getStatus(),
                     OB3s3.getStatus(), OB3s4.getStatus(), OB3s5.getStatus(), OB3s1.getPeriod(), OB3s1.getTimeRemain(),
                     OB3s2.getPeriod(), OB3s2.getTimeRemain(), M3timer.getPeriod(), M3timer.getTimeRemain(),
                     OB3s4.getPeriod(), OB3s4.getTimeRemain());
             sendResponse();
+        } else if(!strcmp("firmware", parameter)){
+            sendRespText(FIRMWARE_VER);
         } else {
             sendRespText("wrong get command");
         }
-    } else if(!strncmp("set", action, 3)){
-        if(!OB1auto && !strncmp("c1", parameter, 2)){
+    } else if(!strcmp("set", action)){
+        if(!OB1auto && !strcmp("c1", parameter)){
             C1.setValue(limit((int)value, 0, 1));
-        } else if(!OB2auto && !strncmp("c2", parameter, 2)){
+        } else if(!OB2auto && !strcmp("c2", parameter)){
             C2.setValue(limit((int)value, 0, 1));
-        } else if(!OB3auto && !strncmp("c3", parameter, 2)){
+        } else if(!OB3auto && !strcmp("c3", parameter)){
             C3.setValue(limit((int)value, 0, 1));
-        } else if(!OB1auto && !strncmp("o1", parameter, 2)){
+        } else if(!OB1auto && !strcmp("o1", parameter)){
             O1.setValue(limit((int)value, 0, 1));
-        } else if(!OB2auto && !strncmp("o2", parameter, 2)){
+        } else if(!OB2auto && !strcmp("o2", parameter)){
             O2.setValue(limit((int)value, 0, 1));
-        } else if(!OB3auto && !strncmp("o3", parameter, 2)){
+        } else if(!OB3auto && !strcmp("o3", parameter)){
             O3.setValue(limit((int)value, 0, 1));
-        } else if(!OB1auto && !strncmp("d1", parameter, 2)){
+        } else if(!OB1auto && !strcmp("d1", parameter)){
             D1.setValue(limit((int)value, 0, 1));
-        } else if(!OB2auto && !strncmp("d2", parameter, 2)){
+        } else if(!OB2auto && !strcmp("d2", parameter)){
             D2.setValue(limit((int)value, 0, 1));
-        } else if(!OB3auto && !strncmp("d3", parameter, 2)){
+        } else if(!OB3auto && !strcmp("d3", parameter)){
             D3.setValue(limit((int)value, 0, 1));
-        } else if(!CHBauto && !strncmp("d4", parameter, 2)){
+        } else if(!CHBauto && !strcmp("d4", parameter)){
             D4.setValue(limit((int)value, 0, 1));
-        } else if(!OB1auto && !strncmp("m1", parameter, 2)){
+        } else if(!OB1auto && !strcmp("m1", parameter)){
             M1.setValue(limit((int)value, 0, 1));
-        } else if(!OB2auto && !strncmp("m2", parameter, 2)){
+        } else if(!OB2auto && !strcmp("m2", parameter)){
             M2.setValue(limit((int)value, 0, 1));
-        } else if(!OB3auto && !strncmp("m3", parameter, 2)){
+        } else if(!OB3auto && !strcmp("m3", parameter)){
             M3.setValue(limit((int)value, 0, 1));
-        } else if(!CHBauto && !strncmp("m6", parameter, 2)){
+        } else if(!CHBauto && !strcmp("m6", parameter)){
             M6.setValue(limit((int)value, 0, 1));
-        } else if(!CHBauto && !strncmp("m7", parameter, 2)){
+        } else if(!CHBauto && !strcmp("m7", parameter)){
             M7.setValue(limit((int)value, 0, 1));
-        } else if(OB1auto && !strncmp("ob1again", parameter, 8)){
+        } else if(OB1auto && !strcmp("ob1again", parameter)){
             OB1step = 6;
-        } else if(!strncmp("ob1auto", parameter, 7)){
+        } else if(!strcmp("ob1auto", parameter)){
             setAuto(&OB1TaskHandle, &OB1auto, value);
-        } else if(OB1auto && !strncmp("ob1next", parameter, 7)){
+        } else if(OB1auto && !strcmp("ob1next", parameter)){
             OB1next = value > 0;
-        } else if(OB2auto && !strncmp("ob2again", parameter, 8)){
+        } else if(OB2auto && !strcmp("ob2again", parameter)){
             OB2step = 6;
-        } else if(!strncmp("ob2auto", parameter, 7)){
+        } else if(!strcmp("ob2auto", parameter)){
             setAuto(&OB2TaskHandle, &OB2auto, value);
-        } else if(OB2auto && !strncmp("ob2next", parameter, 7)){
+        } else if(OB2auto && !strcmp("ob2next", parameter)){
             OB2next = value > 0;
-        } else if(OB3auto && !strncmp("ob3again", parameter, 8)){
+        } else if(OB3auto && !strcmp("ob3again", parameter)){
             OB3step = 6;
-        } else if(!strncmp("ob3auto", parameter, 7)){
+        } else if(!strcmp("ob3auto", parameter)){
             setAuto(&OB3TaskHandle, &OB3auto, value);
-        } else if(OB3auto && !strncmp("ob3next", parameter, 7)){
+        } else if(OB3auto && !strcmp("ob3next", parameter)){
             OB3next = value > 0;
-        } else if(CHBauto && !strncmp("chbagain", parameter, 7)){
+        } else if(CHBauto && !strcmp("chbagain", parameter)){
             CHBstep = 3;
-        } else if(!strncmp("chbauto", parameter, 7)){
+        } else if(!strcmp("chbauto", parameter)){
             setAuto(&CHBTaskHandle, &CHBauto, value);
-        } else if(CHBauto && !strncmp("chbnext", parameter, 7)){
+        } else if(CHBauto && !strcmp("chbnext", parameter)){
             CHBnext = value > 0;
-        } else if(!strncmp("ob1s2per", parameter, 8)){
+        } else if(!strcmp("ob1s2per", parameter)){
             OB1s1.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
-        } else if(!strncmp("ob1s3per", parameter, 8)){
+        } else if(!strcmp("ob1s3per", parameter)){
             OB1s2.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
-        } else if(!strncmp("ob1s4per", parameter, 9)){
+        } else if(!strcmp("ob1s4per", parameter)){
             M1timer.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
-        } else if(!strncmp("ob1s5per", parameter, 8)){
+        } else if(!strcmp("ob1s5per", parameter)){
             OB1s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)999999000));
             saveFlash();
-        } else if(!strncmp("ob2s2per", parameter, 8)){
+        } else if(!strcmp("ob2s2per", parameter)){
             OB2s1.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
-        } else if(!strncmp("ob2s3per", parameter, 8)){
+        } else if(!strcmp("ob2s3per", parameter)){
             OB2s2.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
-        } else if(!strncmp("ob2s4per", parameter, 9)){
+        } else if(!strcmp("ob2s4per", parameter)){
             M2timer.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
-        } else if(!strncmp("ob2s5per", parameter, 8)){
+        } else if(!strcmp("ob2s5per", parameter)){
             OB2s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)999999000));
             saveFlash();
-        } else if(!strncmp("ob3s2per", parameter, 8)){
+        } else if(!strcmp("ob3s2per", parameter)){
             OB3s1.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
-        } else if(!strncmp("ob3s3per", parameter, 8)){
+        } else if(!strcmp("ob3s3per", parameter)){
             OB3s2.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
-        } else if(!strncmp("ob3s4per", parameter, 9)){
+        } else if(!strcmp("ob3s4per", parameter)){
             M3timer.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
-        } else if(!strncmp("ob3s5per", parameter, 8)){
+        } else if(!strcmp("ob3s5per", parameter)){
             OB3s4.setPeriod(limit(value, (uint32_t)1000, (uint32_t)999999000));
             saveFlash();
-        } else if(!strncmp("chbs2per", parameter, 8)){
+        } else if(!strcmp("chbs2per", parameter)){
             CHBs1.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
-        } else if(!strncmp("allauto", parameter, 7)){
+        } else if(!strcmp("allauto", parameter)){
             setAuto(&OB1TaskHandle, &OB1auto, value);
             setAuto(&OB2TaskHandle, &OB2auto, value);
             setAuto(&OB3TaskHandle, &OB3auto, value);
             setAuto(&CHBTaskHandle, &CHBauto, value);
-        } else if(!strncmp("all", parameter, 3)){
+        } else if(!strcmp("all", parameter)){
             if(!OB1auto){
                 C1.setValue(value > 0);
                 O1.setValue(value > 0);
@@ -289,7 +291,9 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             return;
         }
         sendRespText("ok");
-    } else if(!strncmp("ping", action, 4)){
+    } else if(!strcmp("ping", action)){
         sendRespText("pong");
+    } else {
+        sendRespText("wrong command");
     }
 }

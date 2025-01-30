@@ -9,6 +9,7 @@
 
 #include "usbd_cdc_if.h"
 
+#include "main_app.h"
 #include "coil.h"
 #include "coil_with_timer.h"
 #include "simple_input.h"
