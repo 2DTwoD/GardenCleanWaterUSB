@@ -16,10 +16,12 @@ void CommonTimer::setPeriod(uint32_t value){
     if(finished()){
         setCurrentTime(value);
     } else {
-        if(value >= getPeriod()){
+        if(value > getPeriod()){
             setCurrentTime(getCurrentTime() + value - getPeriod());
         } else {
-            setCurrentTime(0);
+            uint32_t sub = getPeriod() - value;
+            sub = sub > getCurrentTime()? getCurrentTime(): sub;
+            setCurrentTime(getCurrentTime() - sub);
         }
     }
     period = value;

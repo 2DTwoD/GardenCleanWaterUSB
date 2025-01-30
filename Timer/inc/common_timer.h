@@ -1,7 +1,10 @@
 #ifndef COMMON_TIMER_H
 #define COMMON_TIMER_H
-#include "stdint.h"
+
+#include <cstdint>
+
 #include "interfaces.h"
+#include "common.h"
 
 class CommonTimer {
 	private:
