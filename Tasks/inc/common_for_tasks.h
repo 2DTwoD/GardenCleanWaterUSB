@@ -41,5 +41,6 @@ void deleteSeqFromQueue(Sequence *seq);
 void resetCHBsteps();
 void getQueueString(char* result);
 bool queueIsEmpty();
+void lockSeqIfStepEqual(Sequence *seq, uint8_t step);
 
 #endif //COMMON_FOR_TASKS_H

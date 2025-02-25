@@ -25,6 +25,7 @@ class Sequence: private RFimpulse{
 		void start(bool value);
 		void lock(bool value);
 		void finish(bool value);
+        uint8_t getStep() const;
 		void slfSet(bool strt, bool lck, bool fin);
 		bool active();
 		bool started();

@@ -21,24 +21,25 @@ void OBTask(void *pvParameters){
 	TaskKit* obKit = (TaskKit*) pvParameters;
 	resetAllSteps(obKit);
 	while(1){
+        if(obKit->OBs4->finishedImpulse()){
+            pushSeqInQueue(obKit->OBs5);
+        }
         if(!*obKit->OBauto){
-            obKit->OBs0->lock(true);
-            obKit->OBs1->lock(true);
-            obKit->OBs2->lock(true);
-            obKit->OBs3->lock(true);
-            obKit->OBs4->lock(true);
-            obKit->OBs5->lock(true);
+            lockSeqIfStepEqual(obKit->OBs0, *obKit->OBstep);
+            lockSeqIfStepEqual(obKit->OBs1, *obKit->OBstep);
+            lockSeqIfStepEqual(obKit->OBs2, *obKit->OBstep);
+            lockSeqIfStepEqual(obKit->OBs3, *obKit->OBstep);
+            lockSeqIfStepEqual(obKit->OBs4, *obKit->OBstep);
+            lockSeqIfStepEqual(obKit->OBs5, *obKit->OBstep);
             obKit->Mtimer->setPause(true);
             vTaskSuspend(nullptr);
         }
-		if(obKit->OBs4->finishedImpulse()){
-			pushSeqInQueue(obKit->OBs5);
-		}
 		switch(*obKit->OBstep){
 			case 0:
 				obKit->OBs0->start(true);
 				obKit->OBs0->lock(false);
 				obKit->OBs0->finish(obKit->H->isNotActive() || *obKit->OBnext);
+                if(!*obKit->OBauto) break;
 				*obKit->C = false;
 				*obKit->M = false;
 				break;
@@ -46,6 +47,7 @@ void OBTask(void *pvParameters){
 				obKit->OBs1->start(true);
 				obKit->OBs1->lock(false);
                 obKit->OBs1->finish(*obKit->OBnext);
+                if(!*obKit->OBauto) break;
 				*obKit->C = false;
 				*obKit->O = false;
 				*obKit->D = obKit->OBs1->active();
@@ -55,6 +57,7 @@ void OBTask(void *pvParameters){
 				obKit->OBs2->start(true);
 				obKit->OBs2->lock(false);
                 obKit->OBs2->finish(*obKit->OBnext);
+                if(!*obKit->OBauto) break;
 				*obKit->C = obKit->OBs2->active();
 				*obKit->O = false;
 				*obKit->D = obKit->OBs2->active();
@@ -64,6 +67,7 @@ void OBTask(void *pvParameters){
 				obKit->OBs3->start(true);
 				obKit->OBs3->lock(false);
 				obKit->OBs3->finish(obKit->B->isActive() || *obKit->OBnext);
+                if(!*obKit->OBauto) break;
 				*obKit->C = obKit->OBs3->active();
 				*obKit->O = false;
 				*obKit->D = false;
@@ -79,6 +83,7 @@ void OBTask(void *pvParameters){
 				obKit->OBs4->start(true);
 				obKit->OBs4->lock(false);
                 obKit->OBs4->finish(*obKit->OBnext);
+                if(!*obKit->OBauto) break;
 				*obKit->C = false;
 				*obKit->O = false;
 				*obKit->D = false;
@@ -87,21 +92,23 @@ void OBTask(void *pvParameters){
 			case 5:
 				obKit->OBs5->lock(S4.isActive());
 				obKit->OBs5->finish(obKit->H->isNotActive() ||*obKit->OBnext);
+                if(!*obKit->OBauto) break;
                 *obKit->C = false;
 				*obKit->O = obKit->OBs5->active();
 				*obKit->D = false;
 				*obKit->M = false;
 				break;
-			default:
-				*obKit->OBstep = 0;
-				taskENTER_CRITICAL();
-				if(getSeqFromQueue() == obKit->OBs5){
-					resetCHBsteps();
-				}
-				deleteSeqFromQueue(obKit->OBs5);
-                taskEXIT_CRITICAL();
-				resetAllSteps(obKit);
 		}
+        if(*obKit->OBstep > 5){
+            *obKit->OBstep = 0;
+            taskENTER_CRITICAL();
+            if(getSeqFromQueue() == obKit->OBs5){
+                resetCHBsteps();
+            }
+            deleteSeqFromQueue(obKit->OBs5);
+            taskEXIT_CRITICAL();
+            resetAllSteps(obKit);
+        }
         *obKit->OBnext = false;
 		vTaskDelay(1);
 	}

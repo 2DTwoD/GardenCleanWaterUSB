@@ -89,3 +89,8 @@ void resetCHBsteps(){
 	CHBstep = 0;
 }
 
+void lockSeqIfStepEqual(Sequence *seq, uint8_t step){
+    if(seq->getStep() == step){
+        seq->lock(true);
+    }
+}

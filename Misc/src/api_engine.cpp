@@ -110,9 +110,9 @@ void zeroAndFill(char *ar, char *fillVal){
     sprintf(ar, "%s", fillVal);
 }
 
-void setAuto(TaskHandle_t *task, bool *curAuto, bool val){
-    *curAuto = val > 0;
-    if(*curAuto){
+void setWithResume(TaskHandle_t *task, bool *curValue, bool val){
+    *curValue = val > 0;
+    if(*curValue){
         vTaskResume(*task);
     }
 }
@@ -194,30 +194,34 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             M6.setValue(limit((int)value, 0, 1));
         } else if(!CHBauto && !strcmp("m7", parameter)){
             M7.setValue(limit((int)value, 0, 1));
-        } else if(OB1auto && !strcmp("ob1again", parameter)){
+        } else if(!strcmp("ob1again", parameter)){
             OB1step = 6;
+            vTaskResume(OB1TaskHandle);
         } else if(!strcmp("ob1auto", parameter)){
-            setAuto(&OB1TaskHandle, &OB1auto, value);
-        } else if(OB1auto && !strcmp("ob1next", parameter)){
-            OB1next = value > 0;
-        } else if(OB2auto && !strcmp("ob2again", parameter)){
+            setWithResume(&OB1TaskHandle, &OB1auto, value);
+        } else if(!strcmp("ob1next", parameter)){
+            setWithResume(&OB1TaskHandle, &OB1next, true);
+        } else if(!strcmp("ob2again", parameter)){
             OB2step = 6;
+            vTaskResume(OB2TaskHandle);
         } else if(!strcmp("ob2auto", parameter)){
-            setAuto(&OB2TaskHandle, &OB2auto, value);
-        } else if(OB2auto && !strcmp("ob2next", parameter)){
-            OB2next = value > 0;
-        } else if(OB3auto && !strcmp("ob3again", parameter)){
+            setWithResume(&OB2TaskHandle, &OB2auto, value);
+        } else if(!strcmp("ob2next", parameter)){
+            setWithResume(&OB2TaskHandle, &OB2next, true);
+        } else if(!strcmp("ob3again", parameter)){
             OB3step = 6;
+            vTaskResume(OB3TaskHandle);
         } else if(!strcmp("ob3auto", parameter)){
-            setAuto(&OB3TaskHandle, &OB3auto, value);
-        } else if(OB3auto && !strcmp("ob3next", parameter)){
-            OB3next = value > 0;
-        } else if(CHBauto && !strcmp("chbagain", parameter)){
+            setWithResume(&OB3TaskHandle, &OB3auto, value);
+        } else if(!strcmp("ob3next", parameter)){
+            setWithResume(&OB3TaskHandle, &OB3next, true);
+        } else if(!strcmp("chbagain", parameter)){
             CHBstep = 3;
+            vTaskResume(CHBTaskHandle);
         } else if(!strcmp("chbauto", parameter)){
-            setAuto(&CHBTaskHandle, &CHBauto, value);
-        } else if(CHBauto && !strcmp("chbnext", parameter)){
-            CHBnext = value > 0;
+            setWithResume(&CHBTaskHandle, &CHBauto, value);
+        } else if(!strcmp("chbnext", parameter)){
+            setWithResume(&CHBTaskHandle, &CHBnext, true);
         } else if(!strcmp("ob1s2per", parameter)){
             OB1s1.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
@@ -258,10 +262,10 @@ void checkCommandAndSendResponse(uint8_t *command, uint8_t len){
             CHBs1.setPeriod(limit((int)value, 1000, 600000));
             saveFlash();
         } else if(!strcmp("allauto", parameter)){
-            setAuto(&OB1TaskHandle, &OB1auto, value);
-            setAuto(&OB2TaskHandle, &OB2auto, value);
-            setAuto(&OB3TaskHandle, &OB3auto, value);
-            setAuto(&CHBTaskHandle, &CHBauto, value);
+            setWithResume(&OB1TaskHandle, &OB1auto, value);
+            setWithResume(&OB2TaskHandle, &OB2auto, value);
+            setWithResume(&OB3TaskHandle, &OB3auto, value);
+            setWithResume(&CHBTaskHandle, &CHBauto, value);
         } else if(!strcmp("all", parameter)){
             if(!OB1auto){
                 C1.setValue(value > 0);

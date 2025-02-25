@@ -20,9 +20,9 @@ void CHBTask(void *pvParameters){
 	Sequence *current_ob = nullptr;
 	while(1){
         if(!CHBauto){
-            CHBs0.lock(true);
-            CHBs1.lock(true);
-            CHBs2.lock(true);
+            lockSeqIfStepEqual(&CHBs0, CHBstep);
+            lockSeqIfStepEqual(&CHBs1, CHBstep);
+            lockSeqIfStepEqual(&CHBs2, CHBstep);
             vTaskSuspend(nullptr);
         }
 		if(CHBs0.finishedImpulse() && current_ob != nullptr){
@@ -34,6 +34,7 @@ void CHBTask(void *pvParameters){
                 CHBs0.start(S5.isNotActive());
                 CHBs0.lock(false);
                 CHBs0.finish(current_ob != nullptr || CHBnext);
+                if(!CHBauto) break;
                 D4 = false;
                 M7 = false;
                 break;
@@ -41,6 +42,7 @@ void CHBTask(void *pvParameters){
                 CHBs1.start(true);
                 CHBs1.lock(false);
                 CHBs1.finish(CHBnext);
+                if(!CHBauto) break;
                 D4 = CHBs1.active();
                 M7 = false;
                 break;
@@ -48,15 +50,19 @@ void CHBTask(void *pvParameters){
                 CHBs2.start(true);
                 CHBs2.lock(S4.isActive());
                 CHBs2.finish(CHBnext || queueIsEmpty());
+                if(!CHBauto) break;
                 D4 = false;
                 M7 = CHBs2.active();
                 break;
-            default:
-                resetCHBsteps();
+        }
+        if(CHBstep > 2){
+            resetCHBsteps();
         }
         CHBnext = false;
-        M6timer = S6.isActive();
-        M6 = M6timer.get();
+        if(CHBauto){
+            M6timer = S6.isActive();
+            M6 = M6timer.get();
+        }
 		vTaskDelay(1);
 	}
 }

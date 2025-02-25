@@ -54,14 +54,18 @@ bool Sequence::finishedImpulse(){
 Status Sequence::getStatus() {
     if (finished()){
         return SEQ_FINISHED;
-    } else if(!started()){
-        return SEQ_STAND_BY;
     } else if(locked()){
         return SEQ_LOCKED;
+    } else if(!started()){
+        return SEQ_STAND_BY;
     } else if(active()){
         return SEQ_ACTIVE;
     }
     return SEQ_UNKNOWN;
+}
+
+uint8_t Sequence::getStep() const {
+    return seq_step;
 }
 
 //SequenceDelayed
