@@ -31,12 +31,12 @@ int mainApp(void){
 		__NOP();
 	}
 	xReturned = xTaskCreate(CHBTask, "CHBTask", configMINIMAL_STACK_SIZE,
-                            NULL, tskIDLE_PRIORITY + 1, &CHBTaskHandle);
+                            NULL, tskIDLE_PRIORITY + 2, &CHBTaskHandle);
 	if( xReturned != pdPASS ){
 		__NOP();
 	}
 	xReturned = xTaskCreate(diagTask, "diagTask", configMINIMAL_STACK_SIZE,
-                            NULL, tskIDLE_PRIORITY + 3, NULL);
+                            NULL, tskIDLE_PRIORITY + 1, NULL);
 	if( xReturned != pdPASS ){
 		__NOP();
 	}
