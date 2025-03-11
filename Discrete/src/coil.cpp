@@ -27,9 +27,9 @@ ProgrammCoil& ProgrammCoil::operator=(bool value){
 //Coil
 Coil::Coil(GPIO_TypeDef *gpio, uint8_t pin): GPIOcommon(gpio, pin) {
 	if(pin < 8){
-		setBitsInRegister(&gpio->CRL, 0x1111 << (4 * pin), 0b0001);
+		setBitsInRegister(&gpio->CRL, 0b1111 << (4 * pin), 0b0001);
 	} else {
-		setBitsInRegister(&gpio->CRH, 0x1111 << (4 * pin - 32), 0b0001);
+		setBitsInRegister(&gpio->CRH, 0b1111 << (4 * pin - 32), 0b0001);
 	}
 }
 bool Coil::isActive(){

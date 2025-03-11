@@ -11,7 +11,7 @@
 #include "flash.h"
 
 //Версия прошивки
-#define FIRMWARE_VER "v 1.1.0"
+#define FIRMWARE_VER "v 1.1.1"
 
 extern uint8_t updateObjectsSize;
 extern IUpdated1ms *update1msObjects[];
